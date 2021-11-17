@@ -1,0 +1,48 @@
+@import '../../styles/abstracts/controls';
+.loaderBlock {
+  position: relative;
+  @extend %flex-column;
+}
+.loaderElement {
+  width: 100%;
+  position: relative;
+  height: 4px;
+  overflow: hidden;
+  @include animation('loader 3s infinite ease-in-out');
+  @include keyframes(loader) {
+    0% {
+      background-color: theme-colors('background', 'gray');
+    }
+    50% {
+      background-color: theme-colors('background', 'border');
+    }
+    100% {
+      background-color: theme-colors('background', 'gray');
+    }
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: -100px;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    @include linear-gradient(
+      to right,
+      (
+        theme-colors('background', 'gray') 0%,
+        theme-colors('background', 'border') 20%,
+        theme-colors('background', 'gray') 100%
+      )
+    );
+    @include animation('overlay 1s cubic-bezier(0.2, 0, 0.2, 1) infinite');
+    @include keyframes(overlay) {
+      from {
+        left: -100px;
+      }
+      to {
+        left: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,667 @@
+@import '../abstracts/controls';
+/*--- form common ---*/
+.ant-input,
+.ant-picker {
+	flex: 0 0 auto;
+	min-height: 38px;
+	font-weight: 400;
+	padding: 0 1rem;
+	border: solid 1px theme-colors('primary', 'light', 0.3);
+	@include transition(all 0.4s ease-in-out);
+	@extend %radius-sm;
+	@extend %radius-sm;
+	@include transition(all 0.4s ease-in-out);
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: theme-colors('theam', 'light');
+		@include transition(all 0.4s ease-in-out);
+		@include box-shadow(0 0 0 transparent);
+	}
+}
+/*--- Row ---*/
+.ant-row {
+	border: 0;
+	.ant-col {
+		margin-bottom: 1rem;
+	}
+}
+/*--- collapse  ---*/
+.ant-collapse {
+	border: 0;
+	background-color: transparent;
+	@extend %flex-column;
+	.ant-collapse-item {
+		border: 0;
+		flex: 0 1 auto;
+		margin: 1px 0;
+		background-color: transparent;
+		@extend %flex-column;
+		.ant-collapse-header {
+			padding: 0.5rem 1rem 0.5rem 2.5rem;
+			background-color: theme-colors('primary', 'light', 0.06);
+			.ant-collapse-arrow {
+				top: 50%;
+				padding: 0;
+				@include transform(translate(0, -50%));
+			}
+		}
+		.ant-collapse-content {
+			border: solid 1px theme-colors('primary', 'light', 0.06);
+			.ant-collapse-content-box {
+				padding: 0.5rem;
+			}
+		}
+	}
+}
+/*--- Select ---*/
+.ant-select {
+	flex: 0 0 auto;
+	min-height: 32px;
+	position: relative;
+	@extend %flex-column;
+	.ant-select-arrow {
+		cursor: pointer;
+		top: 50%;
+		padding: 0;
+		margin: 0;
+		@extend %flexbox;
+		@extend %all-center;
+		@include transform(translate(0, -50%));
+		.anticon {
+			color: theme-colors('primary', 'light', 0.5);
+			width: 21px;
+			margin-left: 0px;
+		}
+	}
+
+	&.ant-select-focused {
+		background-color: transparent;
+		&:not(.ant-select-disabled),
+		&:not(.ant-select-customize-input) {
+			.ant-select-selector {
+				outline: 0;
+				@include box-shadow(0 0 0 transparent !important);
+			}
+		}
+	}
+	&.ant-select-single,
+	&.ant-select-multiple {
+		@include transition(all 0.4s ease-in-out);
+		&:not(.ant-select-customize-input) {
+			.ant-select-selector {
+				min-width: 180px;
+				padding: 0 2rem 0 1rem;
+				min-height: 38px;
+				border: solid 1px theme-colors('primary', 'light', 0.3);
+				@include transition(all 0.4s ease-in-out);
+				@extend %radius-sm;
+				.ant-select-selection-search {
+					@extend %flex-column;
+					@extend %justify-center;
+				}
+			}
+		}
+	}
+	&.ant-select-single {
+		margin: 0;
+		&:not(.ant-select-customize-input) {
+			background-color: transparent;
+			.ant-select-selector {
+				margin: 0;
+				.ant-select-selection-search {
+					flex: 0 0 auto;
+					margin: 0;
+					.ant-select-selection-search-input {
+						font-weight: 300;
+					}
+				}
+				.ant-select-selection-placeholder {
+					font-size: 0.875rem;
+					font-weight: 400;
+					line-height: 37px;
+					color: theme-colors('primary', 'base', 0.4);
+				}
+			}
+		}
+		.ant-select-selection-item {
+			flex: 1 1 auto;
+			line-height: 37px;
+		}
+	}
+	&.ant-select-multiple {
+		margin: 0;
+		.ant-select-selector {
+			margin: 0;
+			.ant-select-selection-overflow {
+				max-width: 400px;
+				@extend %flexbox;
+				@extend %item-wrap;
+				@extend %item-center;
+				.ant-select-selection-search {
+					flex: 0 0 auto;
+					margin: 0;
+					.ant-select-selection-search-input {
+						font-weight: 300;
+					}
+				}
+			}
+			.ant-select-selection-placeholder {
+				font-size: 0.875rem;
+				left: 1rem;
+				font-weight: 400;
+				color: theme-colors('primary', 'base', 0.4);
+			}
+		}
+		.ant-select-selection-item {
+			flex: 1 1 auto;
+			line-height: 23px;
+		}
+	}
+	&.sort-select {
+		flex: 0 0 auto;
+		margin-right: 0.5rem;
+	}
+}
+
+/*--- input ---*/
+.ant-input {
+	margin: 0;
+	font-size: 0.875rem;
+	@include placeholder {
+		color: theme-colors('primary', 'base', 0.4);
+	}
+	&.login-input {
+		min-height: 46px;
+	}
+	&.search-input {
+		padding-left: 44px;
+		@include placeholder {
+			color: theme-colors('primary', 'base', 0.4);
+		}
+	}
+	&:focus,
+	&:hover {
+		outline: 0;
+		color: theme-colors('theam', 'light');
+		border-color: theme-colors('theam', 'light');
+		@include box-shadow(0 0 0 transparent);
+		@include transition(all 0.4s ease-in-out);
+	}
+	&:focus {
+		@include transition(all 0.4s ease-in-out);
+		@include placeholder {
+			color: transparent;
+			@include transition(all 0.4s ease-in-out);
+		}
+	}
+	&.textarea-item {
+		padding: 1rem;
+		min-height: 150px;
+		max-height: 150px;
+		@include placeholder {
+			color: theme-colors('primary', 'base', 0.4);
+		}
+	}
+	&[type='number'] {
+		max-width: 140px;
+		min-width: auto;
+		text-align: center;
+	}
+}
+/*--- input password ---*/
+.ant-input-affix-wrapper {
+	border: solid 1px theme-colors('primary', 'light', 0.3);
+	&.ant-input-password {
+		padding: 0;
+		min-height: 46px;
+		position: relative;
+		@extend %radius-sm;
+		@extend %flexbox;
+		@extend %item-center;
+		.ant-input-suffix {
+			margin: 0;
+			padding: 0;
+			right: 1rem;
+			top: 50%;
+			position: absolute;
+			@include transform(translateY(-50%));
+		}
+	}
+	&:focus,
+	&:hover {
+		outline: 0;
+		color: theme-colors('theam', 'light');
+		border-color: theme-colors('theam', 'light');
+		@include box-shadow(0 0 0 transparent);
+		@include transition(all 0.4s ease-in-out);
+	}
+	&:not(.ant-input-affix-wrapper-disabled):focus,
+	&:not(.ant-input-affix-wrapper-disabled):hover {
+		outline: 0;
+		border-color: theme-colors('theam', 'dark');
+		color: theme-colors('theam', 'dark');
+		@include transition(all 0.4s ease-in-out);
+		@include box-shadow(0 0 0 transparent);
+	}
+	input.ant-input {
+		height: 100%;
+		min-height: 44px;
+		padding: 0 1rem;
+		&:focus {
+			@include box-shadow(
+				0 0 1000px theme-colors('background', 'white') inset !important
+			);
+		}
+	}
+}
+
+/*--- button ---*/
+.ant-btn {
+	padding: 0 1rem;
+	border-style: solid;
+	border-width: 1px;
+	min-width: 120px;
+	height: 40px;
+	border-color: theme-colors('theam', 'base', 0.6);
+	outline: 0;
+	cursor: pointer;
+	@extend %flexbox;
+	@extend %all-center;
+	@extend %radius-sm;
+	@include transition(all 0.4s ease-in-out);
+	&[disabled] {
+		background-color: theme-colors('primary', 'base', 0.2) !important;
+		color: theme-colors('primary', 'base', 0.4) !important;
+		&:hover {
+			color: theme-colors('primary', 'base', 0.4) !important;
+		}
+	}
+	&:focus,
+	&:hover {
+		outline: 0;
+		color: theme-colors('theam', 'light');
+		@include box-shadow(0 0 0 transparent);
+		@include transition(all 0.4s ease-in-out);
+	}
+	&:not(:last-child) {
+		margin-right: 1rem;
+	}
+	.loader {
+		margin-right: 10px;
+	}
+	@include media('<phone') {
+		margin-right: 0;
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+	@include media('>=phone', '<576px') {
+		margin-right: 0;
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+	@include media('>=576px', '<=tablet') {
+		margin-right: 0;
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+	&.ant-btn-primary {
+		border: 0;
+		background-size: 100% 30%;
+		color: theme-colors('background', 'white');
+		&:hover {
+			background-position: 50% 0;
+		}
+		&:not(.ant-btn-sm),
+		&:not([disabled]) {
+			@extend %btn-primary;
+			color: theme-colors('background', 'white') !important;
+		}
+	}
+	&.ant-btn-sm {
+		height: 24px;
+		min-width: auto;
+		padding: 0 7px;
+		font-size: 14px;
+		border-radius: 2px;
+	}
+	&.ant-btn-dashed {
+		border-style: dashed;
+	}
+	&.ant-btn-link {
+		border: 0;
+		color: theme-colors('theam', 'light');
+	}
+	&.ant-btn-text {
+		border: 0px;
+		color: theme-colors('primary', 'base');
+	}
+	&.rese-btn {
+		height: 50px;
+		min-width: 60%;
+		color: theme-colors('background', 'white');
+		border: 0;
+		background-color: theme-colors('theam', 'base') !important;
+	}
+	&.login-btn {
+		height: 46px;
+		min-width: 100%;
+		border: 0;
+		font-size: 1rem;
+		text-transform: uppercase;
+		color: theme-colors('background', 'white');
+		background-color: theme-colors('theam', 'base') !important;
+		@include box-shadow(0px 20px 40px theme-colors('theam', 'base', 0.3));
+	}
+	&.changes-btn {
+		height: 46px;
+		flex: 1 1 auto;
+		max-width: 50%;
+		font-size: 1rem;
+		margin-right: 8px;
+		text-transform: uppercase;
+		@include box-shadow(0px 20px 40px theme-colors('theam', 'base', 0.3));
+		&:last-child {
+			margin-left: 8px;
+			margin-right: 0;
+		}
+	}
+}
+/* ------ Maodel window -------*/
+.ant-modal-wrap {
+	height: 100vh;
+	background-color: theme-colors('theam', 'dark', 0.2);
+	@include transition(all 0.4s ease-in-out);
+	@include animation('fadeIn 0.8s');
+	@include keyframes(fadeIn) {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+	.ant-modal {
+		padding-bottom: 0;
+		@include media('<phone') {
+			max-width: 80% !important;
+		}
+
+		@include media('>=phone', '<=575.99px') {
+			max-width: 80% !important;
+		}
+
+		@include media('>=576px', '<tablet') {
+			max-width: 90% !important;
+		}
+
+		@include media('>=tablet', '<=992px') {
+			max-width: 90% !important;
+		}
+		&.measurement-model {
+			min-width: 1000px !important;
+			max-width: 1000px !important;
+		}
+		&.evidence-modal {
+			min-width: 1000px !important;
+			max-width: 1000px !important;
+		}
+		.ant-modal-content {
+			outline: 0;
+			overflow: hidden;
+			@extend %radius-md;
+			@extend %flex-column;
+			.ant-modal-close {
+				position: absolute;
+				right: 0px;
+				top: 10px;
+				z-index: 99;
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+				background-color: theme-colors('background', 'white', 0.5);
+				@include transform(translate(-50%, 0));
+				@extend %flexbox;
+				@extend %all-center;
+				.ant-modal-close-x {
+					flex: 0 0 auto;
+					line-height: 20px !important;
+					width: auto !important;
+					height: auto !important;
+				}
+			}
+
+			.ant-modal-header {
+				flex: 0 1 auto;
+				@extend %flexbox;
+				@extend %item-center;
+				.ant-modal-title {
+					font-size: 1.256rem !important;
+					font-weight: 400;
+					color: theme-colors('primary', 'base', 0.6);
+				}
+			}
+			.ant-modal-body {
+				flex: 1 1 auto;
+				.model-content-scroll {
+					max-height: calc(100vh - 222px);
+				}
+			}
+			.ant-modal-footer {
+				flex: 0 1 auto;
+				@extend %flexbox;
+				@extend %justify-end;
+			}
+		}
+	}
+}
+/* ------ Datwe Picker -------*/
+.ant-picker {
+	flex: 0 0 auto;
+
+	.ant-picker-input {
+		margin: 0;
+		input {
+			font-size: 0.875rem;
+			font-weight: 400;
+		}
+	}
+	&.mission-picker {
+		max-width: 135px;
+	}
+}
+/* ------ Table style -------*/
+.ant-table-wrapper {
+	min-width: 100%;
+	flex: 1 1 auto;
+	@extend %flex-column;
+	table {
+		display: table;
+		.ant-table-thead {
+			margin: 0;
+			tr {
+				@include transition(all 0.4s ease-in-out);
+				.ant-table-cell {
+					padding: 0.75rem 0.5rem;
+					vertical-align: middle;
+				}
+			}
+		}
+		.ant-table-tbody {
+			margin: 0;
+			.ant-table-row {
+				@include transition(all 0.4s ease-in-out);
+				.ant-table-cell {
+					padding: 0.75em 0.5rem;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+}
+
+/**---Antd Pagination---**/
+.pagination-block {
+	padding: 1rem 0;
+	@extend %flex-column;
+	.ant-pagination {
+		flex: 1 1 auto;
+		height: 40px;
+		@extend %flexbox;
+		@extend %item-center;
+		@extend %justify-end;
+		@extend %radius-xl;
+		.ant-pagination-total-text {
+			margin-right: auto;
+		}
+		.ant-pagination-item,
+		.ant-pagination-prev,
+		.ant-pagination-next {
+			border: 0;
+			flex: 0 0 auto;
+			padding: 0px;
+			height: 30px;
+			width: 30px;
+			overflow: hidden;
+			background-color: theme-colors('background', 'white');
+			border: 0;
+			@extend %flexbox;
+			@extend %all-center;
+			@extend %radius-sm;
+			@include transition(all 0.8s ease-in-out);
+			a,
+			.ant-pagination-item-link {
+				flex: 0 0 auto;
+				height: 30px;
+				width: 30px;
+				line-height: 30px;
+
+				margin: 0px;
+				padding: 0px 8px;
+				background-color: transparent;
+				border: 0;
+				@extend %flexbox;
+				@extend %all-center;
+				@include border-radius(3px);
+			}
+			&:hover {
+				border: theme-colors('theam', 'dark') solid 1px;
+				@include transition(all 0.4s ease-in-out);
+				a {
+					color: theme-colors('theam', 'dark');
+					font-weight: 400;
+					@include transition(all 0.4s ease-in-out);
+				}
+			}
+			&.ant-pagination-disabled {
+				color: theme-colors('primary', 'light', 0.3);
+				&:hover {
+					border: 0 !important;
+				}
+			}
+			&.ant-pagination-item-active {
+				border: 0;
+				border: theme-colors('theam', 'dark') solid 1px;
+				a {
+					color: theme-colors('theam', 'dark');
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
+/*--- Antd tab--- */
+.ant-tabs {
+	@extend %flex-column;
+	.ant-tabs-nav {
+		@extend %flex-column;
+		.ant-tabs-nav-wrap {
+			@extend %flex-column;
+			.ant-tabs-nav-list {
+				@extend %flexbox;
+				@extend %item-center;
+				.ant-tabs-tab {
+					padding: 0;
+					.ant-tabs-tab-btn {
+						color: theme-colors('primary', 'base');
+					}
+					&.ant-tabs-tab-active {
+						flex: 0 0 auto;
+						.ant-tabs-tab-btn {
+							color: theme-colors('theam', 'base');
+						}
+					}
+				}
+				.ant-tabs-ink-bar {
+					background-color: theme-colors('theam', 'base');
+				}
+			}
+		}
+	}
+	&.result-tab {
+		flex: 0 1 auto;
+		.ant-tabs-nav {
+			margin: 0;
+			flex: 0 1 auto;
+			background-color: theme-colors('background', 'white');
+			@include box-shadow(
+				0px 0px 8px theme-colors('primary', 'base', 0.2)
+			);
+			.ant-tabs-nav-wrap {
+				margin: 0 auto;
+				width: 100%;
+				padding: 0 1rem;
+				flex: 1 1 auto;
+
+				@include media('>=desktop', '<=1366px') {
+					max-width: 1140px;
+				}
+				@include media('>1366px') {
+					max-width: 1340px;
+				}
+				.ant-tabs-nav-list {
+					flex: 1 1 auto;
+					min-height: 4.5rem;
+					.ant-tabs-tab {
+						@extend %flexbox;
+						@extend %item-center;
+						&:not(:nth-last-child(2)) {
+							margin-right: 0.625;
+						}
+						&:nth-last-child(2) {
+							margin-left: auto;
+						}
+					}
+				}
+			}
+		}
+		.ant-tabs-content {
+			flex: 1 1 auto;
+			position: relative;
+			padding: 2rem 0;
+		}
+	}
+}
+/*--- Antd tab END--- */
+.ant-picker-dropdown {
+	flex: 1 1 auto;
+	.ant-picker-footer {
+		flex: 0 1 auto;
+		.ant-picker-ranges {
+			@extend %flexbox;
+			@extend %item-center;
+			@extend %justify-end;
+			li {
+				flex: 0 0 auto;
+				margin-left: 0;
+				&:not(:last-child) {
+					margin-right: 15px;
+				}
+			}
+		}
+	}
+}

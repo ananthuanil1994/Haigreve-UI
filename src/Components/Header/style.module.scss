@@ -1,0 +1,18 @@
+@import '../../styles/abstracts/controls';
+.mainHeader {
+	min-height: 70px;
+	padding: 0 1.5rem;
+	background-color: theme-colors('background', 'white');
+	@extend %flexbox;
+	@extend %item-center;
+	.headerBrand {
+		padding: 0.75rem 0;
+		flex: 0 0 auto;
+		@extend %flexbox;
+		@extend %item-center;
+		.logo {
+			flex: 0 0 auto;
+			max-width: 250px;
+		}
+	}
+}

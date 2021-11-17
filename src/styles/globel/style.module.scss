@@ -1,0 +1,204 @@
+@import '../../styles/abstracts/controls';
+.resultBlock {
+  margin-bottom: 1rem;
+  @include animation('fadeIn 0.8s');
+  @include keyframes(fadeIn) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.fullWidth {
+  width: 100%;
+}
+.verticalList {
+  @extend %flex-column;
+  li {
+    flex: 1 1 auto;
+    @extend %flexbox;
+    @extend %item-center;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+.verticalColumn {
+  @extend %flex-column;
+  li {
+    flex: 1 1 auto;
+    @extend %flex-column;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+.horizontalList {
+  @extend %flexbox;
+  @extend %item-center;
+  li {
+    flex: 0 0 auto;
+    @extend %flex-column;
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+    label {
+      flex: 1 1 auto;
+      margin: 0;
+    }
+  }
+}
+.addList {
+  margin-top: 1rem;
+  @extend %flex-column;
+  li {
+    text-decoration: none;
+    @extend %flexbox;
+    @extend %item-wrap;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: solid 1px theme-colors('primary', 'base', 0.08);
+    }
+    .listElement {
+      @extend %flexbox;
+      @extend %item-start;
+      flex: 0 0 auto;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+      .elementLabel {
+        @extend %flexbox;
+        @extend %item-center;
+        label {
+          margin-right: 10px;
+        }
+      }
+      &:first-child {
+        padding: 0;
+        .elementLabel {
+          @extend %flexbox;
+          @extend %item-center;
+          label {
+            min-width: 140px;
+          }
+        }
+      }
+      &__add,
+      &__delete {
+        flex: 0 0 auto;
+        margin-top: 6px;
+        @extend %flexbox;
+        @extend %all-center;
+        @include transition(all 0.4s ease-in-out);
+        span {
+          flex: 0 0 auto;
+          min-width: 26px;
+          min-height: 26px;
+          max-width: 26px;
+          max-height: 26px;
+          border: solid 1px theme-colors('primary', 'base', 0.4);
+          @include border-radius(50%);
+          @include transition(all 0.4s ease-in-out);
+          @extend %flexbox;
+          @extend %all-center;
+          svg {
+            width: 50%;
+            height: 50%;
+            @include transition(all 0.4s ease-in-out);
+            path {
+              fill: theme-colors('primary', 'base', 0.6);
+              @include transition(all 0.4s ease-in-out);
+            }
+          }
+        }
+        &:hover {
+          @include transition(all 0.4s ease-in-out);
+          span {
+            background-color: theme-colors('theam', 'light', 0.9);
+            @include transition(all 0.4s ease-in-out);
+            svg {
+              @include transition(all 0.4s ease-in-out);
+              path {
+                fill: theme-colors('background', 'white');
+              }
+            }
+          }
+        }
+      }
+      &__delete {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+.graphProperties {
+  flex: 1 1 auto;
+  min-width: 100%;
+}
+.tableControl {
+  @extend %flexbox;
+  @extend %item-center;
+  li {
+    flex: 0 0 auto;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    a {
+      @extend %flexbox;
+      @extend %item-center;
+      span {
+        flex: 0 0 auto;
+        &:first-child {
+          overflow: hidden;
+          margin-right: 4px;
+          width: 22px;
+          height: 22px;
+          @extend %flexbox;
+          @extend %all-center;
+          svg {
+            width: 70%;
+            height: 100%;
+            path {
+              fill: theme-colors('theam', 'dark', 0.5);
+            }
+          }
+        }
+      }
+      &:hover {
+        color: theme-colors('theam', 'light');
+        span {
+          color: theme-colors('theam', 'light');
+          svg {
+            margin: 0;
+            path {
+              fill: theme-colors('theam', 'light');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.completed,
+.inProgress,
+.queue,
+.failed {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.completed {
+  color: theme-colors('alerts', 'success');
+}
+.inProgress {
+  color: theme-colors('alerts', 'info');
+}
+.queue {
+  color: theme-colors('alerts', 'warning');
+}
+.failed {
+  color: theme-colors('alerts', 'error');
+}

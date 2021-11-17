@@ -1,0 +1,63 @@
+@import '../../styles/abstracts/controls';
+
+.card {
+  flex: 1 1 auto;
+  height: 100%;
+  overflow: hidden;
+  background-color: theme-colors('background', 'white');
+  border: solid 1px theme-colors('primary', 'light', 0.06);
+  @extend %flex-column;
+  @extend %radius-xl;
+  @include box-shadow(
+    0px 0px 8px theme-colors('primary', 'light', 0.05),
+    0px 0px 1px 1px theme-colors('primary', 'light', 0.04)
+  );
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .cardHeader {
+    flex: 0 1 auto;
+    padding: 1rem;
+    border-bottom: solid 1px theme-colors('primary', 'light', 0.1);
+    @extend %flexbox;
+    @extend %item-center;
+    @extend %justify-between;
+    h3 {
+      margin-bottom: 0;
+      font-size: 1.256rem;
+      color: theme-colors('primary', 'base', 0.6);
+    }
+  }
+  .cardCover {
+    flex: 1 1 auto;
+
+    img {
+      cursor: pointer;
+    }
+  }
+  .cardBody {
+    flex: 1 1 auto;
+    padding: 1rem;
+
+    h3 {
+      cursor: pointer;
+    }
+  }
+  .cardFooter {
+    border-top: solid 1px theme-colors('primary', 'light', 0.1);
+    flex: 0 1 auto;
+    padding: 1rem;
+    @extend %flexbox;
+    @extend %item-center;
+    @extend %justify-end;
+    @include media('<phone') {
+      @include flex-direction(column);
+    }
+    @include media('>=phone', '<576px') {
+      @include flex-direction(column);
+    }
+    @include media('>=576px', '<=tablet') {
+      @include flex-direction(column);
+    }
+  }
+}

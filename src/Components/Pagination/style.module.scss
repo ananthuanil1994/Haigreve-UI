@@ -1,0 +1,6 @@
+@import '../../styles/abstracts/controls';
+.paginationBlock {
+  margin-top: 2rem;
+  @extend %flex-column;
+  @extend %item-end;
+}

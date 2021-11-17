@@ -1,0 +1,47 @@
+@import '../../styles/abstracts/controls';
+.formFeild {
+  flex: 0 0 auto;
+  @extend %flex-column;
+  &__feilditem {
+    flex: 1 1 auto;
+    .feildlabel {
+      flex: 1 1 auto;
+      margin-bottom: 3px;
+      @extend %flexbox;
+      @extend %item-center;
+      .labelBlock {
+        font-size: 13px;
+        font-weight: 400;
+        color: theme-colors('theam', 'dark', 0.9);
+      }
+      .starIcon {
+        width: 0.469rem;
+        height: 0.469rem;
+        font-size: 1.2rem;
+        margin-left: 3px;
+        @extend %flexbox;
+        @extend %all-center;
+        svg {
+          width: 100%;
+          height: 100%;
+          path {
+            fill: theme-colors('alerts', 'error');
+          }
+        }
+      }
+    }
+  }
+  .formHint {
+    flex: 1 1 auto;
+    margin-top: 2px;
+    font-size: 12px;
+    &.textRight {
+      text-align: right;
+    }
+  }
+  .error {
+    color: theme-colors('alerts', 'error');
+    font-style: italic;
+    font-size: 12px;
+  }
+}

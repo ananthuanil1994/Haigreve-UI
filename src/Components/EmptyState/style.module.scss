@@ -1,0 +1,30 @@
+@import '../../styles/abstracts/controls';
+.emptyState {
+	flex: 1 1 auto;
+	flex-grow: 1;
+	@extend %flexbox;
+	@extend %all-center;
+	&__content {
+		@extend %flex-column;
+		@extend %all-center;
+		.emptyImage {
+			flex: 0 0 auto;
+			max-width: 300px;
+			margin-bottom: 20px;
+			@extend %flex-column;
+			@extend %all-center;
+			span {
+				flex: 1 1 auto;
+				max-width: 400px;
+			}
+		}
+		h3 {
+			font-size: 16px;
+			text-align: center;
+		}
+		p {
+			font-size: 14px;
+			text-align: center;
+		}
+	}
+}
