@@ -8,8 +8,9 @@ export function SuccessLeft({ nextButton }) {
     };
     return (
         <React.Fragment>
-            <div className={style.listBlock}>
-                You have successfully subscribed. You'll receive text to activate your license.
+            <div className={style.success}>
+               <h3> You have successfully subscribed. You'll receive text to activate your license.</h3>
+               <img src="..\img\success.png"/>
             </div>
             <div className={style.contentArea__bottom}>
                 {nextButton({ onClick: onSubmit })}
@@ -22,7 +23,7 @@ export function SuccessRight({ config: { image } }) {
     return (
         <div className={style.contentBlock__right}>
             <div className={style.planArea}>
-                <div className={style.planArea__img}><img src={image} /></div>
+                <div className={style.planArea__img}><img src='..\img\winner.png' /></div>
                 <ul>
                     <li>Winner</li>
                 </ul>
