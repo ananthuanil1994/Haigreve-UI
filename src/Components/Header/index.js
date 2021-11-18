@@ -11,7 +11,7 @@ function Header(props) {
 	return (
 		<header className={style.mainHeader}>
 			<div className={style.headerBrand}>
-				<Link className={style.logo}><img src="../img/logo.webp"/></Link>
+				<Link className={style.logo}><img src="../img/logo.png"/></Link>
 			</div>
 		</header>
 	);
