@@ -7,7 +7,7 @@ function Header(props) {
 	return (
 		<header className={style.mainHeader}>
 			<div className={style.headerBrand}>
-				<span className={style.logo}><img src="../img/logo.webp" /></span>
+				<span className={style.logo}><img src="../img/logo.png"/></span>
 			</div>
 		</header>
 	);
