@@ -1,5 +1,130 @@
 @import '../../styles/abstracts/controls';
 .contentBlock {
-	min-height: calc(100vh - 70px);
-	@extend %flex-column;
+	//min-height: calc(100vh - 70px);
+	@extend %flexbox;
+	&__left{
+		@extend %flex-column;
+		@extend %all-center;
+		min-width: 70%;
+		max-width: 70%;
+		@include media('<phone') {
+			min-width: 100%;
+			max-width: 100%;		}
+		@include media('>=phone', '<tablet') {
+			min-width: 100%;
+			max-width: 100%;
+		}
+		.contentArea{
+			@extend %flex-column;
+			background: theme-colors('background', 'white');
+			padding: 1rem 1.5rem;
+			width:90%;
+			margin: 4rem 0rem 0rem  5.7rem;
+			border-radius: 6px;
+		
+			.listBlock{
+				width: 80%;
+				list-style: decimal;
+				margin: 1rem 0rem;
+				li{
+					padding: 10px;
+					border-bottom: 1px solid theme-colors('background', 'border');
+					font-size: 18px;
+					font-weight: 500;
+					color:  theme-colors('background', 'Purple');
+					padding-left: 30px;
+					&::before{
+						content: "";
+						width: 15px;
+						height: 15px;
+						position: absolute;
+						border-radius: 100%;
+						border: 3px solid theme-colors('background', 'pink-light');
+						margin: 5px 0px 0px -24px;
+						
+
+					}
+
+				span{
+					margin-left: 2rem;
+				}
+				}
+			}
+			&__bottom{
+				@extend %flexbox;
+				@extend %justify-between;
+				@extend %justify-end;
+				.nextBtn{
+					background: theme-colors('background', 'pink-light');
+					color: #f8f1fa;
+					font-weight: 500;
+					padding: .5rem 2.5rem;
+					cursor: pointer;
+					&:hover{
+						color: #d4cde5;
+						background: theme-colors('background', 'pink-light');
+					}
+				}
+			}
+	}
+	    .controlArea{
+			@extend %flexbox;
+			@extend %all-center;
+			padding: 10px;
+			li{
+				width: 20px;
+				height: 20px;
+				border-radius: 100%;
+				border: 3px solid  theme-colors('background', 'Purple');
+				margin: 5px;
+			}
+		}
+
+	}
+	&__right{
+		@extend %flexbox;
+		min-width: 30%;
+		max-width: 30%;
+		@include media('<phone') {
+			min-width: 100%;
+			max-width: 100%;		}
+		@include media('>=phone', '<tablet') {
+			min-width: 100%;
+			max-width: 100%;
+		}
+
+		.planArea{
+			@extend %flex-column;
+			@extend %all-center;
+			background: theme-colors('background', 'white');
+			padding: 4rem 1rem;
+			width:75%;
+			margin: 1.3rem 3rem 0rem  0rem;
+			border-radius: 6px;
+			box-shadow: 9px 10px 5px -1px rgba(0,0,0,0.09);
+			-webkit-box-shadow: 9px 10px 5px -1px rgba(0,0,0,0.09);
+			-moz-box-shadow: 9px 10px 5px -1px rgba(0,0,0,0.09);
+			&__img{
+				max-width: 170px;
+			}
+			li{
+				color:  theme-colors('background', 'Purple');
+				font-size: 20px;
+				font-weight: 500;
+				list-style: outside;
+				margin-bottom: 1.5rem;
+			}
+			a{
+				background: #d4cde5;
+				color:  theme-colors('background', 'Purple');
+				font-weight: 500;
+				border-radius: 10px;
+				padding: .2rem 1.2rem;
+				&:hover{
+					color: #d4cde5;
+					background:  theme-colors('background', 'Purple');
+				}
+			}
+		}
+	}
 }

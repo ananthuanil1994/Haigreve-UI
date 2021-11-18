@@ -1,0 +1,43 @@
+@import '../../styles/abstracts/controls';
+.container,
+.container-fluid {
+  @include animation('fadeIn 0.8s');
+  @include keyframes(fadeIn) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.containerFluid {
+  width: 100%;
+  margin: 0 auto;
+}
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  @include transition(all 0.8s ease-in-out);
+  @include media('<phone') {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  @include media('>=phone', '<tablet') {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  @include media('>=tablet', '<=992px') {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  @include media('>=992px', '<desktop') {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  @include media('>=1200px') {
+    max-width: 1340px;
+  }
+}
