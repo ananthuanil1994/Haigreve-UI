@@ -54,16 +54,61 @@
 					margin-left: 2rem;
 				}
 				}
+			
+			}
+			.success{
+				width: 80%;
+				margin: auto;
+				padding: 1.2rem 0rem;
+				@extend %flex-column;
+				@extend %all-center;
+				h3{
+					font-size: 20px;
+					text-align: center;
+					margin-bottom: 1rem;
+					color: theme-colors('background', 'Purple');
+
+				}
+
+			}
+			.formsBlock {
+				@extend %flexbox;
+
+				&__list {
+					padding: 1rem 0rem;
+					padding-left: 10px;
+					margin-bottom: 1.5rem;
+					@extend %item-wrap;
+					@extend %flexbox;
+				
+					li {
+						margin-bottom: .7rem;
+						//flex: 1 1 auto;
+						min-width: 50%;
+						
+						input{
+							width: 98%;
+                            margin-left: 0.2rem;
+							background: #edebec;
+							border: 1px solid  theme-colors('background', 'Purple');
+							
+						}
+					}
+				}
 			}
 			&__bottom{
+				padding-left: 10px;
 				@extend %flexbox;
 				@extend %justify-between;
+				
 				.nextBtn{
 					background: theme-colors('background', 'pink-light');
 					color: #f8f1fa;
 					font-weight: 500;
 					padding: .5rem 2.5rem;
 					cursor: pointer;
+					border: none;
+					border-radius:0px;
 					@extend %flexbox;
 					@extend %all-center;
 
@@ -78,6 +123,7 @@
 			@extend %flexbox;
 			@extend %all-center;
 			padding: 10px;
+			margin-left: 5rem;
 			li{
 				width: 20px;
 				height: 20px;
@@ -139,13 +185,3 @@
 	}
 }
 
-.formsBlock {
-    &__list {
-        padding-top: 1rem;
-        padding-left: 10px;
-        li {
-            flex: 1 1 auto;
-			margin-bottom: 10px;
-        }
-    }
-}
