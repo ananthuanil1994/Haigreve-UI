@@ -33,6 +33,8 @@
 					font-weight: 500;
 					color:  theme-colors('background', 'Purple');
 					padding-left: 30px;
+					cursor: pointer;
+
 					&::before{
 						content: "";
 						width: 15px;
@@ -41,8 +43,11 @@
 						border-radius: 100%;
 						border: 3px solid theme-colors('background', 'pink-light');
 						margin: 5px 0px 0px -24px;
-						
-
+					}
+					&.active{
+						&::before{
+							background-color: theme-colors('background', 'Purple');
+						}
 					}
 
 				span{
@@ -53,13 +58,15 @@
 			&__bottom{
 				@extend %flexbox;
 				@extend %justify-between;
-				@extend %justify-end;
 				.nextBtn{
 					background: theme-colors('background', 'pink-light');
 					color: #f8f1fa;
 					font-weight: 500;
 					padding: .5rem 2.5rem;
 					cursor: pointer;
+					@extend %flexbox;
+					@extend %all-center;
+
 					&:hover{
 						color: #d4cde5;
 						background: theme-colors('background', 'pink-light');
@@ -77,6 +84,9 @@
 				border-radius: 100%;
 				border: 3px solid  theme-colors('background', 'Purple');
 				margin: 5px;
+				&.active{
+					border: 3px solid  theme-colors('background', 'pink-light');
+				}
 			}
 		}
 
@@ -127,4 +137,15 @@
 			}
 		}
 	}
+}
+
+.formsBlock {
+    &__list {
+        padding-top: 1rem;
+        padding-left: 10px;
+        li {
+            flex: 1 1 auto;
+			margin-bottom: 10px;
+        }
+    }
 }

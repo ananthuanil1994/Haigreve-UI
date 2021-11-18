@@ -30,6 +30,7 @@ export const TextInput = (props) => {
 			onClick={props.onClick}
 			id={props.id}
 			max={props.max}
+			required={props.required}
 			min={props.min}
 			onBlur={props.onBlur}
 			style={props.style}

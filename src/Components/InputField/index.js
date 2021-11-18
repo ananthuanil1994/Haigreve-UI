@@ -84,6 +84,7 @@ function InputTypes(props) {
 					maxLength={props.maxLength}
 					onChange={props.onChange}
 					disabled={props.disabled}
+					required={props.required}
 					placeholder={props.placeholderLabel}
 					value={props.value}
 					htmlType={props.htmlType}

@@ -10,13 +10,6 @@ import { ROUTES } from '../../Routes.constants';
 import Header from '../../Components/Header';
 
 class MainFrame extends Component {
-	componentDidUpdate(prevProps, prevState) {
-		// const { pathname } = this.props.location;
-		/* to call all pending api call */
-		// if (prevProps.location.pathname !== pathname) {
-		//     Instances.map(instance => instance.cancelPending && instance.cancelPending());
-		// }
-	}
 
 	render() {
 		return (

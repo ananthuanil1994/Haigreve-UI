@@ -1,50 +1,106 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { ROUTES } from '../../Routes.constants';
+/*eslint-disable*/
+import React, { useState } from 'react';
 import PropType from 'prop-types';
 import style from './style.module.scss';
 import Container from '../../Components/Container';
-function Header(props) {
-	const handleLogout = () => {
-		localStorage.clear();
-		props.history.push(ROUTES.LOGIN);
-	};
-	return<> <Container>
-		<div className={style.contentBlock}>
-			<div className={style.contentBlock__left}>
-			<div className={style.contentArea}>
-			<ul className={style.listBlock}>
-				<li>1Month License  <span>80Take</span></li>
-				<li>1Month License  <span>80Take</span></li>
+import constants from './constants';
+import { ChoosePlanLeft, ChoosePlanRight } from './ChoosePlan';
+import { InfoFormLeft, InfoFormRight } from './InfoForm';
+import { PaymentLeft, PaymentRight } from './Payment';
+import { SuccessLeft, SuccessRight } from './Success';
+import Loader from '../../Components/Loader';
+import { Button } from 'antd';
+import { submitUserPlanInfo } from '../../api';
+function Home(props) {
 
-				<li>1Month License  <span>80Take</span></li>
-				<li>1Month License  <span>80Take</span></li>
-				</ul>
-				<div className={style.contentArea__bottom}>
-					<div className={style.nextBtn}>Next</div>
-					</div>	
-			</div>
-			<ul className={style.controlArea}>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-			</div>
-			<div className={style.contentBlock__right}>
-			<div className={style.planArea}>
-				<div className={style.planArea__img}><img src="..\img\plan1.png"/></div>
-				<ul>
-				<li>Choose your plan</li>
-				</ul>
-				<a  className="startBtn" href="">Get Started</a>
+	const [activeTab, setActiveTab] = useState(constants.tabs.choosePlan);
+	const [forms, setForms] = useState({});
+
+	const submitUserInfo = async (requestBody) => {
+		requestBody.plan = forms[constants.tabs.choosePlan]?.plan;
+		return await submitUserPlanInfo(requestBody);
+	}
+
+	const getContent = () => {
+		switch (activeTab) {
+			case constants.tabs.choosePlan:
+				return {
+					Left: <ChoosePlanLeft data={forms[activeTab]} nextButton={nextButton} />,
+					Right: <ChoosePlanRight config={constants.pageConfig[activeTab]} />
+				};
+			case constants.tabs.infoForm:
+				return {
+					Left: <InfoFormLeft submitUserInfo={submitUserInfo} nextButton={nextButton} />,
+					Right: <InfoFormRight config={constants.pageConfig[activeTab]} />
+				};
+			case constants.tabs.payment:
+				return {
+					Left: <PaymentLeft nextButton={nextButton} />,
+					Right: <PaymentRight config={constants.pageConfig[activeTab]} />
+				};
+			case constants.tabs.success:
+				return {
+					Left: <SuccessLeft nextButton={nextButton} />,
+					Right: <SuccessRight config={constants.pageConfig[activeTab]} />
+				};
+
+			default:
+				return {
+					Left: null,
+					Right: null
+				};
+		}
+	};
+
+	const getTabHint = () => Object.keys(constants.tabs).map(tabName => (
+		<li className={tabName === activeTab ? style.active : ''} />
+	));
+
+	const nextButton = ({ onClick, loading, disabled }) => {
+		const tabs = Object.keys(constants.tabs);
+		const nextTab = tabs[tabs.findIndex(tab => tab === activeTab) + 1];
+
+		const onClickNext = () => {
+			onClick?.((form) => {
+				setForms({ ...forms, [activeTab]: form });
+				if (nextTab) setActiveTab(nextTab);
+			});
+		}
+		const onClickBack = () => setActiveTab(constants.tabs.choosePlan);
+
+		let backButton = activeTab === constants.tabs.infoForm
+			? <Button disabled={loading} children='Prev' onClick={onClickBack} className={style.nextBtn} />
+			: <div />;
+
+		return nextTab ? (
+			<React.Fragment>
+				{backButton}
+				<Button disabled={loading || disabled}
+					onClick={onClickNext} className={style.nextBtn}>
+					{loading ? <Loader classList={['sm white']} /> : ''}
+					Next
+				</Button>
+			</React.Fragment>
+		) : null;
+	}
+
+	const { Left, Right } = getContent();
+	return (
+		<Container>
+			<div className={style.contentBlock}>
+				<div className={style.contentBlock__left}>
+					<div className={style.contentArea}>
+						{Left}
+					</div>
+					<ul className={style.controlArea} children={getTabHint()} />
 				</div>
+				{Right}
 			</div>
-		</div>
 		</Container>
-		</>;
+	);
 }
-export default withRouter(Header);
-Header.PropType = {
+
+export default Home;
+Home.PropType = {
 	className: PropType.string,
 };
