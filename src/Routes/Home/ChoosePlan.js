@@ -28,7 +28,7 @@ export function ChoosePlanLeft({ nextButton, data }) {
         if (apiInfo.loading) return <ContentLoader spaceBetween={1.5} hasWrapper />;
         return apiInfo.data?.map(option => (
             <li className={activePlan === option.id ? style.active : ''} onClick={() => setPlan(option.id)}>
-                {option.planName}  <span>{option.amount}</span>
+                {option.planName}  <span>{option.amount} Taka</span>
             </li>
         ));
     };

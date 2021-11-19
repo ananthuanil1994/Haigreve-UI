@@ -9,7 +9,7 @@ export function PaymentLeft({ nextButton }) {
 
     return (
         <React.Fragment>
-            <div className={style.listBlock}>
+            <div className={style.paymentContainer}>
                 Payment Gateway
             </div>
             <div className={style.contentArea__bottom}>

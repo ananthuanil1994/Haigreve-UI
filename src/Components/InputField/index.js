@@ -38,9 +38,7 @@ export default class InputField extends Component {
 						{this.props.hint}
 					</hint>
 				) : null}
-				{this.props.error ? (
-					<p className={style.error}>{this.props.error}</p>
-				) : null}
+				<p className={style.error}>{this.props.error ? this.props.error : null}</p>
 			</div>
 		);
 	}
