@@ -1,7 +1,7 @@
-import Plan1 from '../../../public/img/plan1.png' ;
-import Plan2 from '../../../public/img/plan1.png' ;
-import Plan3 from '../../../public/img/plan1.png' ;
-import Plan4 from '../../../public/img/plan1.png' ;
+import Plan1 from '../../../public/img/plan1.png';
+import Plan2 from '../../../public/img/plan1.png';
+import Plan3 from '../../../public/img/plan1.png';
+import Plan4 from '../../../public/img/plan1.png';
 
 const tabs = {
     choosePlan: 'choosePlan',
@@ -11,11 +11,12 @@ const tabs = {
 };
 export default {
     tabs,
+    errorMessage: 'We are experiencing technical difficulties, please try again later!',
     pageConfig: {
         [tabs.choosePlan]: {
             id: 1,
             name: tabs.choosePlan,
-            image:Plan1
+            image: Plan1
         },
         [tabs.infoForm]: {
             id: 2,

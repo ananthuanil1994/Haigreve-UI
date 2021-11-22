@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import style from './style.module.scss';
 import Container from '../../Components/Container';
@@ -11,10 +11,16 @@ import { SuccessLeft, SuccessRight } from './Success';
 import Loader from '../../Components/Loader';
 import { Button } from 'antd';
 import { submitUserPlanInfo } from '../../api';
+import { getIndexRoute } from '../../utils/queryString';
+import { ROUTES } from '../../Routes.constants';
 function Home(props) {
 
 	const [activeTab, setActiveTab] = useState(constants.tabs.choosePlan);
 	const [forms, setForms] = useState({});
+	useEffect(() => {
+		if (getIndexRoute() === ROUTES.PAYMENT_SUCCESS.split('/')[1])
+			setActiveTab(constants.tabs.success);
+	}, []);
 
 	const submitUserInfo = async (requestBody) => {
 		requestBody.plan = forms[constants.tabs.choosePlan]?.plan;
@@ -53,12 +59,14 @@ function Home(props) {
 	};
 
 	const getTabHint = () => Object.keys(constants.tabs).map(tabName => (
-		<li className={tabName === activeTab ? style.active : ''} />
+		<li key={tabName} className={tabName === activeTab ? style.active : ''} />
 	));
 
 	const nextButton = ({ onClick, loading, disabled }) => {
 		const tabs = Object.keys(constants.tabs);
-		const nextTab = tabs[tabs.findIndex(tab => tab === activeTab) + 1];
+		const activeTabIndex = tabs.findIndex(tab => tab === activeTab);
+		const showNext = tabs[activeTabIndex + 2];
+		const nextTab = tabs[activeTabIndex + 1];
 
 		const onClickNext = () => {
 			onClick?.((form) => {
@@ -72,7 +80,7 @@ function Home(props) {
 			? <Button disabled={loading} children='Prev' onClick={onClickBack} className={style.nextBtn} />
 			: <div />;
 
-		return nextTab ? (
+		return showNext ? (
 			<React.Fragment>
 				{backButton}
 				<Button disabled={loading || disabled}

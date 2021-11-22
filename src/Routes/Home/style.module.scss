@@ -28,6 +28,11 @@
 				@extend %all-center;
 				font-size: 20px;
 			}
+			.errorMessage {
+				min-height: 200px;
+				@extend %flex-column;
+				@extend %all-center;
+			}
 			.listBlock{
 				width: 80%;
 				list-style: decimal;

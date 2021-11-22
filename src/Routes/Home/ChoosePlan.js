@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAvailablePlans } from '../../api';
 import { ContentLoader } from '../../Components/ContentLoader';
+import constants from './constants';
 import style from './style.module.scss';
 
 
@@ -26,20 +27,22 @@ export function ChoosePlanLeft({ nextButton, data }) {
 
     const renderPlans = () => {
         if (apiInfo.loading) return <ContentLoader spaceBetween={1.5} hasWrapper />;
-        return apiInfo.data?.map(option => (
-            <li className={activePlan === option.id ? style.active : ''} onClick={() => setPlan(option.id)}>
-              <p>  {option.planName}</p>  <span>{option.amount} Taka</span>
+        if (apiInfo.error) return <p className={style.errorMessage} children={constants.errorMessage} />;
+        const plans = apiInfo.data?.map(option => (
+            <li key={option.id}
+                className={activePlan === option.id ? style.active : ''}
+                onClick={() => setPlan(option.id)}>
+                <p>  {option.planName}</p>  <span>{option.amount} Taka</span>
             </li>
         ));
+        return <ul className={style.listBlock} children={plans} />;
     };
 
     return (
         <React.Fragment>
-            <ul className={style.listBlock}>
-                {renderPlans()}
-            </ul>
+            {renderPlans()}
             <div className={style.contentArea__bottom}>
-                {nextButton({ onClick: onSubmit })}
+                {nextButton({ onClick: onSubmit, disabled: !activePlan })}
             </div>
         </React.Fragment>
     );
