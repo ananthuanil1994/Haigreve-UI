@@ -40,6 +40,7 @@
 					color:  theme-colors('background', 'Purple');
 					padding-left: 30px;
 					cursor: pointer;
+					@extend %flexbox;
 
 					&::before{
 						content: "";
@@ -54,6 +55,10 @@
 						&::before{
 							background-color: theme-colors('background', 'Purple');
 						}
+					}
+					p{
+						min-width: 220px;
+						color:  theme-colors('background', 'Purple');
 					}
 
 				span{
@@ -83,7 +88,7 @@
 				&__list {
 					padding: 1rem 0rem;
 					padding-left: 10px;
-					margin-bottom: 1.5rem;
+					//margin-bottom: .5rem;
 					@extend %item-wrap;
 					@extend %flexbox;
 				
@@ -119,8 +124,8 @@
 					@extend %all-center;
 
 					&:hover{
-						color: #d4cde5;
-						background: theme-colors('background', 'pink-light');
+						color:  theme-colors('background', 'white');
+						background: theme-colors('background', 'pink-dark');
 					}
 				}
 			}
