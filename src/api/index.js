@@ -28,12 +28,12 @@ export const submitUserPlanInfo = async (data) => {
     const payload = {
         name: data.name,
         email: data.email,
-        phone_no: data.phone,
-        subscription_plan: data.plan
+        phoneNo: data.phone,
+        subscriptionPlan: data.plan
     };
     try {
         // await sleep(1000);
-        await axios.post(SUBSCRIPTION_PLAN_URL, payload);
+        await axios.post(SAVE_CUSTOMER_URL, payload);
 
         return { success: true };
     } catch {
@@ -45,7 +45,7 @@ export const getAvailablePlans = async () => {
     try {
         // await sleep();
         // const data = DUMMY_DATA;
-        const { data } = await axios.get(SAVE_CUSTOMER_URL);
+        const { data } = await axios.get(SUBSCRIPTION_PLAN_URL);
 
         return {
             success: true,
