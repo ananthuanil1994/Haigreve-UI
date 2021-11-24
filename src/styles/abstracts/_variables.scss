@@ -1,60 +1,44 @@
 $theme-colors-key: 'base' !default;
 $theme-colors: (
-  'primary': (
-    'light': #3f5374,
-    'base': #243655,
-    'dark': #0e1829,
-  ),
-  'theam': (
-    'light': #53baff,
-    'base': #3161a8,
-    'dark': #132a4c,
-  ),
-  'button': (
-    'first': #25aae1,
-    'second': #4481eb,
-    'third': #04befe,
-    'last': #3f86ed,
-  ),
-  'background': (
-    'body': #f2f6fa,
-    'white': #fff,
-    'black': #000,
-    'gray': #f7f7f7,
-    'border': #ededed,
-    'yellow': #efcd3e,
-    'blue': #016bd8,
-    'teal': #01ddfd,
-    'footer': #dee1f1,
-    'Purple':#512b59,
-    'pink-light':#f3a5b8,
-    'pink-dark':#e8747a,
-    
-  ),
-  'alerts': (
-    'success': #3c763d,
-    'error': #d82a2a,
-    'info': #31708f,
-    'warning': #8a6d3b,
-  ),
+	'primary': (
+		'light': #3f5374,
+		'base': #243655,
+		'dark': #0e1829,
+	),
+	'theam': (
+		'light': #f3a5b8,
+		'base': #e8747a,
+		'dark': #512b59,
+	),
+	'background': (
+		'body': #e6e4ec,
+		'white': #fff,
+		'border': #ededed,
+	),
+	'alerts': (
+		'success': #3c763d,
+		'error': #d82a2a,
+		'info': #31708f,
+		'warning': #8a6d3b,
+	),
 );
 @function theme-colors(
-  $name: 'primary',
-  $variant: $theme-colors-key,
-  $opacity: 1
+	$name: 'primary',
+	$variant: $theme-colors-key,
+	$opacity: 1
 ) {
-  $color: null;
-  $color-spectrum: map-get($theme-colors, $name);
-  @if $color-spectrum {
-    $color: map-get($color-spectrum, $variant);
-  }
-  $alpha: if(
-    type-of($opacity) == 'number',
-    $opacity,
-    map-get($theme-opacity, $opacity)
-  );
-  @if $alpha {
-    $color: rgba($color, $alpha);
-  }
-  @return $color;
+	$color: null;
+	$color-spectrum: map-get($theme-colors, $name);
+	@if $color-spectrum {
+		$color: map-get($color-spectrum, $variant);
+	}
+	$alpha: if(
+		type-of($opacity) == 'number',
+		$opacity,
+		map-get($theme-opacity, $opacity)
+	);
+	@if $alpha {
+		$color: rgba($color, $alpha);
+	}
+	@return $color;
 }

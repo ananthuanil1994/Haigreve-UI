@@ -317,7 +317,6 @@
 		}
 		&:not(.ant-btn-sm),
 		&:not([disabled]) {
-			@extend %btn-primary;
 			color: theme-colors('background', 'white') !important;
 		}
 	}

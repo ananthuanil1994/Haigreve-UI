@@ -1,153 +1,118 @@
 @import './mixins';
 %inline-flex {
-  @include inline-flex;
+	@include inline-flex;
 }
 %flexbox {
-  @include flexbox();
-  @include flex-direction(row);
+	@include flexbox();
+	@include flex-direction(row);
 }
 %flex-column {
-  @include flexbox();
-  @include flex-direction(column);
+	@include flexbox();
+	@include flex-direction(column);
 }
 %row-reverse {
-  @include flex-direction(row-reverse);
+	@include flex-direction(row-reverse);
 }
 %column-reverse {
-  @include flex-direction(column-reverse);
+	@include flex-direction(column-reverse);
 }
 %all-center {
-  @include justify-content(center);
-  @include align-items(center);
+	@include justify-content(center);
+	@include align-items(center);
 }
 
 %justify-center {
-  @include justify-content(center);
+	@include justify-content(center);
 }
 
 %justify-between {
-  @include justify-content(space-between);
+	@include justify-content(space-between);
 }
 
 %justify-around {
-  @include justify-content(space-around);
+	@include justify-content(space-around);
 }
 
 %justify-start {
-  @include justify-content(flex-start);
+	@include justify-content(flex-start);
 }
 
 %justify-end {
-  @include justify-content(flex-end);
+	@include justify-content(flex-end);
 }
 
 %item-center {
-  @include align-items(center);
+	@include align-items(center);
 }
 
 %item-start {
-  @include align-items(flex-start);
+	@include align-items(flex-start);
 }
 
 %item-end {
-  @include align-items(flex-end);
+	@include align-items(flex-end);
 }
 
 %item-stretch {
-  @include align-items(stretch);
+	@include align-items(stretch);
 }
 
 %item-nowrap {
-  @include flex-wrap(nowrap);
+	@include flex-wrap(nowrap);
 }
 
 %item-wrap {
-  @include flex-wrap(wrap);
+	@include flex-wrap(wrap);
 }
 
 %image-overlay {
-  @include linear-gradient(
-    to top,
-    (
-      theme-colors('primary', 'base', 0.7) 20%,
-      theme-colors('primary', 'base', 0.01) 100%
-    )
-  );
+	@include linear-gradient(
+		to top,
+		(
+			theme-colors('primary', 'base', 0.7) 20%,
+			theme-colors('primary', 'base', 0.01) 100%
+		)
+	);
 }
 %timeline-box {
-  @include linear-gradient(
-    to top,
-    (
-      theme-colors('primary', 'base', 0.1) 20%,
-      theme-colors('primary', 'base', 0.01) 100%
-    )
-  );
+	@include linear-gradient(
+		to top,
+		(
+			theme-colors('primary', 'base', 0.1) 20%,
+			theme-colors('primary', 'base', 0.01) 100%
+		)
+	);
 }
 %break-text {
-  word-break: break-word;
-  line-break: strict;
-  white-space: normal;
-  @include hyphens('auto');
+	word-break: break-word;
+	line-break: strict;
+	white-space: normal;
+	@include hyphens('auto');
 }
 %radius-xs {
-  @include border-radius(0.125rem);
+	@include border-radius(0.125rem);
 }
 %radius-sm {
-  @include border-radius(0.25rem);
+	@include border-radius(0.25rem);
 }
 %radius-md {
-  @include border-radius(0.375rem);
+	@include border-radius(0.375rem);
 }
 %radius-lg {
-  @include border-radius(0.5rem);
+	@include border-radius(0.5rem);
 }
 %radius-xl {
-  @include border-radius(0.625rem);
+	@include border-radius(0.625rem);
 }
 %radius-xxl {
-  @include border-radius(0.75rem);
+	@include border-radius(0.75rem);
 }
 %radius-full {
-  @include border-radius(50px);
+	@include border-radius(50px);
 }
 %radius-round {
-  @include border-radius(50%);
+	@include border-radius(50%);
 }
 %bg-gray {
-  background-color: theme-colors('theam', 'light', 0.05);
-}
-%header-gradient {
-  @include linear-gradient(
-    to right,
-    (theme-colors('primary', 'base') 30%, theme-colors('primary', 'light') 100%)
-  );
-}
-%download-btn {
-  @include linear-gradient(
-    to right,
-    (
-      theme-colors('background', 'teal') 30%,
-      theme-colors('theam', 'light') 100%
-    )
-  );
-}
-%btn-primary {
-  @include linear-gradient(
-    to right,
-    (
-      theme-colors('button', 'first') 30%,
-      theme-colors('button', 'second') 100%,
-      theme-colors('button', 'third') 100%,
-      theme-colors('button', 'last') 100%
-    )
-  );
-}
-%login-theam {
-  @include linear-gradient(
-    to right bottom,
-    (
-      theme-colors('background', 'blue') 30%,
-      theme-colors('background', 'teal') 100%
-    )
-  );
+	background-color: theme-colors('theam', 'light', 0.05);
 }

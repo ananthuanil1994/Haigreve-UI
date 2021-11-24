@@ -1,18 +1,26 @@
 @import '../../styles/abstracts/controls';
 .mainHeader {
 	min-height: 70px;
-	padding: 0 1.5rem;
-	//background-color: theme-colors('background', 'white');
+	padding: 0.5rem 1.5rem;
 	@extend %flexbox;
 	@extend %item-center;
+	@include transition(all 0.4s ease-in-out);
+	@include media('<phone') {
+		@include justify-content(center);
+	}
+	@include media('>=phone', '<tablet') {
+		@include justify-content(center);
+	}
 	.headerBrand {
 		padding: 0.75rem 0;
 		flex: 0 0 auto;
 		@extend %flexbox;
 		@extend %item-center;
+		@include transition(all 0.4s ease-in-out);
 		.logo {
 			flex: 0 0 auto;
-			max-width: 250px;
+			max-width: 180px;
+			@include transition(all 0.4s ease-in-out);
 		}
 	}
 }
