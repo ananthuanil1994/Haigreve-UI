@@ -6,7 +6,7 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    var re = /(^(\+880)?)(2|31|51)(\d){8}$/;
+    var re = /^(\+88)?01(\d){9}$/;
     return phone.match(re);
 }
 
