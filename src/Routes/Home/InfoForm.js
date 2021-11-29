@@ -109,7 +109,7 @@ export function InfoFormRight({ config: { image } }) {
 		<div className={style.contentBlock__right}>
 			<div className={style.planArea}>
 				<div className={style.planContent}>
-					<div className={style.styleplanContent__img}>
+					<div className={style.planContent__img}>
 						<img src='..\img\details.png' />
 					</div>
 					<ul className={style.styleplanContent__list}>
