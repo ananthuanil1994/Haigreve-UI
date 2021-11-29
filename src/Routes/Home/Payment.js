@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import style from './style.module.scss';
+import { SupportLink } from './SupportLink';
 
 export function PaymentLeft({ nextButton }) {
 	const onSubmit = (cb) => {
@@ -29,6 +30,7 @@ export function PaymentRight({ config: { image } }) {
 						<li>Payment</li>
 					</ul>
 				</div>
+				<SupportLink />
 			</div>
 		</div>
 	);

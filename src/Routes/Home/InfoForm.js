@@ -5,6 +5,7 @@ import { submitUserPlanInfo } from '../../api';
 import InputField from '../../Components/InputField';
 import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
+import { SupportLink } from './SupportLink';
 
 const FormConfig = {
 	email: {
@@ -108,13 +109,14 @@ export function InfoFormRight({ config: { image } }) {
 		<div className={style.contentBlock__right}>
 			<div className={style.planArea}>
 				<div className={style.planContent}>
-					<div className={styleplanContent__img}>
+					<div className={style.styleplanContent__img}>
 						<img src='..\img\details.png' />
 					</div>
-					<ul className={styleplanContent__list}>
+					<ul className={style.styleplanContent__list}>
 						<li>Enter your details</li>
 					</ul>
 				</div>
+				<SupportLink/>
 			</div>
 		</div>
 	);

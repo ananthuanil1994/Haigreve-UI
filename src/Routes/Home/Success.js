@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import style from './style.module.scss';
+import { SupportLink } from './SupportLink';
 
 export function SuccessLeft({ nextButton }) {
 	const onSubmit = (cb) => {
@@ -34,6 +35,7 @@ export function SuccessRight({ config: { image } }) {
 						<li>Winner</li>
 					</ul>
 				</div>
+				<SupportLink />
 			</div>
 		</div>
 	);
