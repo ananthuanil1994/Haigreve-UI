@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Plan1 from '../../../public/img/plan1.png';
 import Plan2 from '../../../public/img/plan1.png';
 import Plan3 from '../../../public/img/plan1.png';
