@@ -1,0 +1,156 @@
+@import '../../styles/abstracts/controls';
+.contentBlock {
+  @extend %flexbox;
+  @extend %justify-between;
+  @include media('<phone') {
+    @include flex-direction(column);
+  }
+  @include media('>=phone', '<tablet') {
+    @include flex-direction(column);
+  }
+  &__left {
+    flex: 1 1 auto;
+    @extend %flex-column;
+    @extend %justify-center;
+    @include media('<phone') {
+      order: 2;
+      margin-top: 1.5rem;
+    }
+    @include media('>=phone', '<tablet') {
+      order: 2;
+      margin-top: 1.5rem;
+    }
+    .contentArea {
+      background: theme-colors('background', 'white');
+      padding: 1rem 1.5rem;
+      @extend %flex-column;
+      @include border-radius(4px);
+      .success {
+        width: 80%;
+        margin: auto;
+        padding: 1.2rem 0rem;
+        @extend %flex-column;
+        @extend %all-center;
+        h3 {
+          font-size: 20px;
+          text-align: center;
+          margin-bottom: 1rem;
+          color: theme-colors('theam', 'dark');
+        }
+      }
+    }
+  }
+  &__right {
+    flex: 1 1 auto;
+    max-width: 350px;
+    @extend %flexbox;
+    @include media('<phone') {
+      max-width: 100%;
+    }
+    @include media('>=phone', '<tablet') {
+      max-width: 100%;
+    }
+    .planArea {
+      flex: 1 1 auto;
+      background: theme-colors('background', 'white');
+      padding: 4rem 1rem;
+      @extend %flex-column;
+      @include border-radius(10px);
+      @include box-shadow(4px 4px 10px theme-colors('primary', 'base', 0.1));
+      @include transform(translateY(-1.2rem));
+      @include media('<phone') {
+        @include transform(translateY(0));
+      }
+      @include media('>=phone', '<tablet') {
+        @include transform(translateY(0));
+      }
+      .planContent {
+        flex: 1 1 auto;
+        @extend %flex-column;
+        @extend %all-center;
+        &__img {
+          max-width: 170px;
+        }
+        &__list {
+          @extend %flex-column;
+          li {
+            flex: 1 1 auto;
+            color: theme-colors('theam', 'dark');
+            font-size: 20px;
+            font-weight: 500;
+            list-style: outside;
+            margin-bottom: 1.5rem;
+          }
+        }
+        a {
+          background: #d4cde5;
+          color: theme-colors('theam', 'dark');
+          font-weight: 500;
+          border-radius: 10px;
+          padding: 0.2rem 1.2rem;
+          @include transition(all 0.4s ease-in-out);
+          &:hover {
+            color: theme-colors('background', 'white');
+            background: theme-colors('theam', 'base');
+            @include transition(all 0.4s ease-in-out);
+          }
+        }
+      }
+      .planFooter {
+        flex: 0 0 auto;
+        margin-top: 3rem;
+        @extend %flex-column;
+        @extend %all-center;
+        a {
+          @extend %flexbox;
+          @extend %all-center;
+          color: theme-colors('theam', 'dark');
+          @include transition(all 0.4s ease-in-out);
+          span {
+            flex: 0 0 auto;
+            &:first-child {
+              margin-right: 0.5rem;
+              width: 16px;
+              height: 16px;
+              @extend %flexbox;
+              @extend %all-center;
+              svg {
+                width: 100%;
+                height: 100%;
+                path {
+                  fill: theme-colors('theam', 'dark');
+                  @include transition(all 0.4s ease-in-out);
+                }
+              }
+            }
+            &:last-child {
+              font-size: 14px;
+              color: theme-colors('theam', 'dark');
+              @include transition(all 0.4s ease-in-out);
+            }
+          }
+          &:hover {
+            @include transition(all 0.4s ease-in-out);
+            span {
+              @include transition(all 0.4s ease-in-out);
+              &:first-child {
+                @include transition(all 0.4s ease-in-out);
+                svg {
+                  @include transition(all 0.4s ease-in-out);
+                  path {
+                    fill: theme-colors('theam', 'base');
+                    @include transition(all 0.4s ease-in-out);
+                  }
+                }
+              }
+              &:last-child {
+                color: theme-colors('theam', 'base');
+                @include transition(all 0.4s ease-in-out);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
