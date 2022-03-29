@@ -7,12 +7,17 @@ import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
 import RightImage from '../../../public/img/details.png';
 
+// config change
 const FormConfig = {
   email: {
     value: '',
     error: '',
   },
-  name: {
+  firstName: {
+    value: '',
+    error: '',
+  },
+  lastName: {
     value: '',
     error: '',
   },
@@ -27,7 +32,8 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const [isTouched, setTouched] = useState(false);
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
 
-  const { email, phone, name } = formConfig;
+  // changed config to add first and last name
+  const { firstName, lastName, email, phone } = formConfig;
 
   const onSubmit = async (cb) => {
     setTouched(true);
@@ -35,12 +41,17 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     setFormConfig({ ...config });
     if (isValid) {
       setApiInfo({ loading: true });
-      const { success } = await submitUserInfo(
+      const { success, confirmUrl } = await submitUserInfo(
         getReqBodyFromConfig(formConfig)
       );
+
       setApiInfo({ error: !success });
-      if (success) cb?.();
-      else
+      // if (success) cb?.();
+      // url redirection to confirmation link
+      if (success) {
+        location.href = confirmUrl;
+        setApiInfo({ loading: false });
+      } else
         message.error(
           'We are experiencing technical difficulties, please try again later!',
           5
@@ -54,29 +65,41 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     if (isTouched) config = validateInfoForm(config).formConfig;
     setFormConfig({ ...config });
   };
-
+  // added input elements for first and last name
   return (
     <React.Fragment>
       <form>
         <ul className={style.formsBlock__list}>
           <li>
             <InputField
-              htmlForName='text'
-              placeholderLabel='Name'
-              type='text'
-              id='name'
+              htmlForName="text"
+              placeholderLabel="First Name"
+              type="text"
+              id="firstName"
               onChange={inputChange}
-              value={name.value}
-              error={name.error}
+              value={firstName.value}
+              error={firstName.error}
               required
             />
           </li>
           <li>
             <InputField
-              htmlForName='tel'
-              placeholderLabel='Phone'
-              type='tel'
-              id='phone'
+              htmlForName="text"
+              placeholderLabel="Last Name"
+              type="text"
+              id="lastName"
+              onChange={inputChange}
+              value={lastName.value}
+              error={lastName.error}
+              required
+            />
+          </li>
+          <li>
+            <InputField
+              htmlForName="tel"
+              placeholderLabel="Phone"
+              type="tel"
+              id="phone"
               onChange={inputChange}
               value={phone.value}
               error={phone.error}
@@ -85,10 +108,10 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
           </li>
           <li>
             <InputField
-              htmlForName='email'
-              placeholderLabel='Email'
-              type='text'
-              id='email'
+              htmlForName="email"
+              placeholderLabel="Email"
+              type="text"
+              id="email"
               onChange={inputChange}
               value={email.value}
               error={email.error}
