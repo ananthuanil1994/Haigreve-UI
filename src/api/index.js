@@ -48,7 +48,7 @@ export const submitUserPlanInfo = async (data) => {
     // await sleep(1000);
     // await axios.post(SAVE_CUSTOMER_URL, payload);
     //confirmation url call
-    const response = await axios.get(CONFIRM_SUBSCRIPTION_URL, confirmPayload); // {"confirmation_link": ""}
+    const response = await axios.post(CONFIRM_SUBSCRIPTION_URL, confirmPayload); // {"confirmation_link": ""}
     return { success: true, confirmUrl: response.data['confirmation_link'] };
   } catch {
     return { success: false };
