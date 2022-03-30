@@ -50,7 +50,6 @@ export const validateInfoForm = (formConfig) => {
 export const getReqBodyFromConfig = (formConfig) => {
   const obj = {};
   Object.keys(formConfig).map((field) => {
-    console.log(field);
     if (field === 'phone') {
       obj[field] = formConfig[field].value.replace('+88 ', '88');
     } else {
