@@ -36,7 +36,7 @@ export function ChoosePlanLeft({ nextButton, data }) {
       return (
         <p className={style.errorMessage} children={constants.errorMessage} />
       );
-    const plans = apiInfo.data?.map((option) => (
+    const plans = [apiInfo.data[0]]?.map((option) => (
       <li
         key={option.id}
         className={activePlan === option.id ? style.active : ''}
