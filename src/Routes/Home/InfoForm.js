@@ -114,12 +114,13 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               type="tel"
               id="phone"
               onChange={inputChange}
-              onFocus={() =>
-                setFormConfig((state) => ({
-                  ...state,
-                  phone: { value: '+88 ' }, //space is important
-                }))
-              }
+              onFocus={() => {
+                !phone.value &&
+                  setFormConfig((state) => ({
+                    ...state,
+                    phone: { value: '+88 ' }, //space is important
+                  }));
+              }}
               value={phone.value}
               error={phone.error}
               required
@@ -141,7 +142,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
             <div>
               status: {statusTest}
               <Button
-                style={{ width: '200px', margin: '20px 0' }}
+                style={{ width: '200px', margin: '10px 0' }}
                 onClick={checkStatus}
               >
                 Check Status
