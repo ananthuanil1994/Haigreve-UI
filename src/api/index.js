@@ -1,8 +1,10 @@
+/*eslint-disable */
 import axios from 'axios';
 const API_BASE_URL = 'https://bd.haigreve.com/api';
 const SUBSCRIPTION_PLAN_URL = API_BASE_URL + '/subscriptionPlans';
 const SAVE_CUSTOMER_URL = API_BASE_URL + '/saveCustomerDetails';
 const CONFIRM_SUBSCRIPTION_URL = API_BASE_URL + '/confirmSubscription'; //added confirmation url
+const CHECK_SUBSCRIPTION_STATUS = API_BASE_URL + '/checkSubscriptionStatus'; // aded subscription check url
 
 const DUMMY_DATA = [
   {
@@ -67,6 +69,18 @@ export const getAvailablePlans = async () => {
     };
   } catch {
     return { success: false };
+  }
+};
+
+export const checkSubscriptionStatus = async (phone_no) => {
+  const phone_number = phone_no.value.replace('+88 ', '88');
+  try {
+    const response = await axios.post(CHECK_SUBSCRIPTION_STATUS, {
+      phone_number,
+    });
+    return response.data['subscription_status'];
+  } catch (error) {
+    console.log(JSON.stringify(error));
   }
 };
 

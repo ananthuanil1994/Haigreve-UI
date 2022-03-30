@@ -1,11 +1,12 @@
 /*eslint-disable*/
-import { message } from 'antd';
+import { Button, message } from 'antd';
 import React, { useState } from 'react';
 import InputField from '../../Components/InputField';
 import { RightSection } from '../../Components/Wrapper';
 import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
 import RightImage from '../../../public/img/details.png';
+import { checkSubscriptionStatus } from '../../api';
 
 // config change
 const FormConfig = {
@@ -31,6 +32,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const [formConfig, setFormConfig] = useState(Object.assign({}, FormConfig));
   const [isTouched, setTouched] = useState(false);
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
+  const [statusTest, setStatusTest] = useState('');
 
   // changed config to add first and last name
   const { firstName, lastName, email, phone } = formConfig;
@@ -49,8 +51,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
       // if (success) cb?.();
       // url redirection to confirmation link
       if (success) {
-        location.href = confirmUrl;
+        window.open(confirmUrl, '_blank');
         setApiInfo({ loading: true });
+        setStatusTest(true);
       } else
         message.error(
           'We are experiencing technical difficulties, please try again later!',
@@ -59,9 +62,19 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     }
   };
 
+  const checkStatus = async () => {
+    const response = await checkSubscriptionStatus(phone);
+    setStatusTest(response);
+  };
+
   const inputChange = ({ id, target }) => {
     let config = formConfig;
-    config[id].value = target.value;
+    if (id === 'phone' && target.value === '+88') {
+      config[id].value = '+88 '; //space is important
+    } else {
+      config[id].value = target.value;
+    }
+
     if (isTouched) config = validateInfoForm(config).formConfig;
     setFormConfig({ ...config });
   };
@@ -101,6 +114,12 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               type="tel"
               id="phone"
               onChange={inputChange}
+              onFocus={() =>
+                setFormConfig((state) => ({
+                  ...state,
+                  phone: { value: '+88 ' }, //space is important
+                }))
+              }
               value={phone.value}
               error={phone.error}
               required
@@ -118,6 +137,17 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               required
             />
           </li>
+          {statusTest && (
+            <div>
+              status: {statusTest}
+              <Button
+                style={{ width: '200px', margin: '20px 0' }}
+                onClick={checkStatus}
+              >
+                Check Status
+              </Button>
+            </div>
+          )}
         </ul>
       </form>
       <div className={style.controlButtons}>
