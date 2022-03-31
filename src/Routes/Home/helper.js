@@ -8,7 +8,7 @@ function validateEmail(email) {
 
 function validatePhone(phone) {
   // +8801534983669
-  var re = /^(\+88)?01(\d){9}$/;
+  var re = /^(\+88 )?01(\d){9}$/;
   return phone.match(re);
 }
 
@@ -50,7 +50,11 @@ export const validateInfoForm = (formConfig) => {
 export const getReqBodyFromConfig = (formConfig) => {
   const obj = {};
   Object.keys(formConfig).map((field) => {
-    obj[field] = formConfig[field].value;
+    if (field === 'phone') {
+      obj[field] = formConfig[field].value.replace('+88 ', '88');
+    } else {
+      obj[field] = formConfig[field].value;
+    }
   });
   return obj;
 };
