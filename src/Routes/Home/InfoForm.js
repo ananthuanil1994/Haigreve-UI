@@ -53,7 +53,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
       if (success) {
         window.open(confirmUrl, '_blank');
         setApiInfo({ loading: true });
-        setStatusTest(true);
+        setStatusTest(false);
       } else
         message.error(
           'We are experiencing technical difficulties, please try again later!',
