@@ -52,8 +52,8 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
       // url redirection to confirmation link
       if (success) {
         window.open(confirmUrl, '_blank');
-        setApiInfo({ loading: true });
-        setStatusTest(false);
+        setApiInfo({ loading: false });
+        setStatusTest(true);
       } else
         message.error(
           'We are experiencing technical difficulties, please try again later!',
