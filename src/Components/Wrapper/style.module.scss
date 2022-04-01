@@ -38,6 +38,10 @@
           margin-bottom: 1rem;
           color: theme-colors('theam', 'dark');
         }
+        img {
+          max-width: 170px;
+          max-height: 170px;
+        }
       }
     }
     .controlArea {

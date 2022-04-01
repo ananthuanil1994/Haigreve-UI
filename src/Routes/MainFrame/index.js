@@ -9,6 +9,7 @@ import Home from '../Home';
 import { ROUTES } from '../../Routes.constants';
 import Header from '../../Components/Header';
 import ActivationSuccess from '../ActivationSuccess';
+import Confirmation from '../Confirmation';
 
 class MainFrame extends Component {
   render() {
@@ -17,11 +18,8 @@ class MainFrame extends Component {
         <Header />
         <Switch>
           <Route path={ROUTES.HOME} component={Home} />
-          <Route path={ROUTES.PAYMENT_SUCCESS} component={Home} />
-          <Route
-            path={ROUTES.ACTIVATION_SUCCESS}
-            component={ActivationSuccess}
-          />
+          <Route path={ROUTES.PAYMENT_SUCCESS} component={Confirmation} />
+          <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} />
           <Redirect from={ROUTES.INDEX} to={ROUTES.HOME} />
         </Switch>
       </Fragment>

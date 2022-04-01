@@ -32,7 +32,6 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const [formConfig, setFormConfig] = useState(Object.assign({}, FormConfig));
   const [isTouched, setTouched] = useState(false);
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
-  const [statusTest, setStatusTest] = useState('');
 
   // changed config to add first and last name
   const { firstName, lastName, email, phone } = formConfig;
@@ -51,9 +50,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
       // if (success) cb?.();
       // url redirection to confirmation link
       if (success) {
-        window.open(confirmUrl, '_blank');
+        // window.open(confirmUrl, '_blank');
+        location.href = confirmUrl;
         setApiInfo({ loading: false });
-        setStatusTest(true);
       } else
         message.error(
           'We are experiencing technical difficulties, please try again later!',
@@ -65,6 +64,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const checkStatus = async () => {
     const response = await checkSubscriptionStatus(phone);
     setStatusTest(response);
+    // preadded
   };
 
   const inputChange = ({ id, target }) => {
@@ -138,17 +138,6 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               required
             />
           </li>
-          {statusTest && (
-            <div>
-              status: {statusTest}
-              <Button
-                style={{ width: '200px', margin: '10px 0' }}
-                onClick={checkStatus}
-              >
-                Check Status
-              </Button>
-            </div>
-          )}
         </ul>
       </form>
       <div className={style.controlButtons}>
