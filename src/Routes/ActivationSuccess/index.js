@@ -15,12 +15,13 @@ export default function ActivationSuccess(props) {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  const phone = searchParams.get('phone');
+  let phone = searchParams.get('phone');
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
     if (phone) {
+      phone = '+' + phone.trim();
       const response = await activateSubscription(phone);
       if (response.data.url) {
         setStatus(true);
