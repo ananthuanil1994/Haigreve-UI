@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint --ext js,jsx --ignore-pattern *.test.js src/",
     "start": "react-app-rewired start",
-    "dev": "react-app-rewired --openssl-legacy-provider start",
+    "dev": "PORT=3005 react-app-rewired --openssl-legacy-provider start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"

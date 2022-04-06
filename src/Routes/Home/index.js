@@ -65,6 +65,7 @@ function Home(props) {
   };
 
   const getTabHint = () =>
+    //map the tabs into ui, and style the active tab, re-renders...
     Object.keys(constants.tabs).map((tabName) => (
       <li key={tabName} className={tabName === activeTab ? style.active : ''} />
     ));
@@ -72,7 +73,7 @@ function Home(props) {
   const nextButton = ({ onClick, loading, disabled }) => {
     const tabs = Object.keys(constants.tabs);
     const activeTabIndex = tabs.findIndex((tab) => tab === activeTab);
-    const showNext = tabs[activeTabIndex + 2];
+    const showNext = tabs[activeTabIndex + 1];
     const nextTab = tabs[activeTabIndex + 1];
 
     const onClickNext = () => {
@@ -87,7 +88,7 @@ function Home(props) {
       activeTab === constants.tabs.infoForm ? (
         <Button
           disabled={loading}
-          children='Prev'
+          children="Prev"
           onClick={onClickBack}
           className={style.nextBtn}
         />
@@ -107,7 +108,19 @@ function Home(props) {
           Next
         </Button>
       </React.Fragment>
-    ) : null;
+    ) : (
+      <React.Fragment>
+        {backButton}
+        <Button
+          disabled={loading || disabled}
+          onClick={onClick}
+          className={style.nextBtn}
+        >
+          {loading ? <Loader classList={['sm white']} /> : ''}
+          Submit
+        </Button>
+      </React.Fragment>
+    );
   };
 
   const ControlArea = () => {
