@@ -18,7 +18,7 @@ class MainFrame extends Component {
         <Header />
         <Switch>
           <Route path={ROUTES.HOME} component={Home} />
-          <Route path={ROUTES.PAYMENT_SUCCESS} component={Confirmation} />
+          <Route path={ROUTES.CONFIRMATION} component={Confirmation} />
           <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} />
           <Redirect from={ROUTES.INDEX} to={ROUTES.HOME} />
         </Switch>

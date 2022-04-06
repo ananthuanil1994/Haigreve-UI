@@ -8,27 +8,22 @@ const CHECK_SUBSCRIPTION_STATUS = API_BASE_URL + '/checkSubscriptionStatus'; // 
 const ACTIVATE_SUBSCRIPTION_URL = API_BASE_URL + '/activateSubscription'; // added activateSubscription url -- joel
 
 export const submitUserPlanInfo = async (data) => {
-  // const payload = {
-  //   firstName: data.firstName,
-  //   lastName: data.lastName,
-  //   email: data.email,
-  //   phoneNo: data.phone,
-  //   subscriptionPlan: data.plan,
-  //   duration_month: 1,
-  //   payment_status: 'success',
-  // };
-  // payload for confirmation url
-  const confirmPayload = {
+  const payload = {
     first_name: data.firstName,
     last_name: data.lastName,
     email: data.email,
     phone_number: data.phone,
   };
   try {
-    // await sleep(1000);
-    // await axios.post(SAVE_CUSTOMER_URL, payload);
-    //confirmation url call
-    const response = await axios.post(CONFIRM_SUBSCRIPTION_URL, confirmPayload); // {"confirmation_link": ""}
+    const log = await axios.post(SAVE_CUSTOMER_URL, {
+      ...payload,
+      subscription_plan: 1,
+    });
+    // if (!log.email) {
+    //   return { success: false, error: log.message };
+    // }
+    console.log(log);
+    const response = await axios.post(CONFIRM_SUBSCRIPTION_URL, payload); // {"confirmation_link": ""}
     return { success: true, confirmUrl: response.data['confirmation_link'] };
   } catch {
     return { success: false };
@@ -37,8 +32,6 @@ export const submitUserPlanInfo = async (data) => {
 
 export const getAvailablePlans = async () => {
   try {
-    // await sleep();
-    // const data = DUMMY_DATA;
     const { data } = await axios.get(SUBSCRIPTION_PLAN_URL);
 
     return {
@@ -70,10 +63,10 @@ const sleep = (duration = 1000) => {
   });
 };
 
-export const activateSubscription = async (phone) => {
+export const activateSubscription = async (phone_number) => {
   try {
-    const response = await axios(ACTIVATE_SUBSCRIPTION_URL, {
-      phone,
+    const response = await axios.post(ACTIVATE_SUBSCRIPTION_URL, {
+      phone_number,
     });
     return { success: true, data: response.data };
   } catch (error) {

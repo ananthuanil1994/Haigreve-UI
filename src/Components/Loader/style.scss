@@ -9,6 +9,10 @@
   flex: 0 auto;
   position: relative;
   overflow: hidden;
+  &.xl {
+    width: 64px !important;
+    height: 64px !important;
+  }
   &.lg {
     width: 40px !important;
     height: 40px !important;

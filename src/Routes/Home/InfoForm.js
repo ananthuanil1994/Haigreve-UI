@@ -42,22 +42,23 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     setFormConfig({ ...config });
     if (isValid) {
       setApiInfo({ loading: true });
-      const { success, confirmUrl } = await submitUserInfo(
+      const { success, confirmUrl, error } = await submitUserInfo(
         getReqBodyFromConfig(formConfig)
       );
 
       setApiInfo({ error: !success });
-      // if (success) cb?.();
-      // url redirection to confirmation link
+
       if (success) {
-        // window.open(confirmUrl, '_blank');
         location.href = confirmUrl;
         setApiInfo({ loading: false });
-      } else
+      } else if (error) {
+        message.error(error, 5);
+      } else {
         message.error(
           'We are experiencing technical difficulties, please try again later!',
           5
         );
+      }
     }
   };
 
