@@ -22,7 +22,6 @@ export default function ActivationSuccess(props) {
   useEffect(async () => {
     if (phone) {
       phone = '+' + phone.trim();
-      console.log('PHONE', phone);
       const response = await activateSubscription(phone);
       if (response.data.url) {
         setStatus(true);
