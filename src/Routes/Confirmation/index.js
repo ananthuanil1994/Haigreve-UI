@@ -4,11 +4,8 @@ import Wrapper, {
   RightSection,
   SuccessSection,
 } from '../../Components/Wrapper';
-import style from './style.module.scss';
-import RightImage from '../../../public/img/winner.png';
 import Messaging from '../../../public/img/messaging.png';
 import Engineering from '../../../public/img/engineering.png';
-import Processing from '../../../public/img/settings.png';
 
 export default function Confirmation(props) {
   return (
