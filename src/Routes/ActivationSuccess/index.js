@@ -22,16 +22,20 @@ export default function ActivationSuccess(props) {
   useEffect(async () => {
     if (phone) {
       phone = '+' + phone.trim();
-      const response = await activateSubscription(phone);
-      if (response.data.url) {
-        setStatus(true);
-        setLoading(true);
-        setTimeout(() => {
-          window.location.href = response.data.url;
-          setLoading(false);
-        }, 3000);
-      } else {
-        setStatus(false);
+      try {
+        const response = await activateSubscription(phone);
+        if (response.data?.url) {
+          setStatus(true);
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+            window.open(response.data.url);
+          }, 3000);
+        } else {
+          setStatus(false);
+        }
+      } catch (error) {
+        console.log(error);
       }
     } else {
       message.error('Invalid URL', 5);
