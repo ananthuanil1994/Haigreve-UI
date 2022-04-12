@@ -6,6 +6,9 @@ import Wrapper, {
 } from '../../Components/Wrapper';
 import Messaging from '../../../public/img/messaging.png';
 import Engineering from '../../../public/img/engineering.png';
+import AppStore from '../../../public/img/app-store.png';
+import PlayStore from '../../../public/img/image.png';
+import { SOCIAL_LINKS } from '../../constants';
 
 export default function Confirmation(props) {
   return (
@@ -18,14 +21,14 @@ function ConfirmationLeft() {
   return (
     <>
       <SuccessSection
-        successTxt={
-          'Please check your mobile for text messages from 2700.'
-          //   'You have successfully subscribed. Check for messages from 2700.'
-        }
+        successTxt={'Please check your mobile for text messages from 2700.'}
         successImage={Messaging}
+        socialText={'Meanwhile, Please Download our App!'}
+        socialLinks={[
+          { icon: AppStore, link: SOCIAL_LINKS.apple },
+          { icon: PlayStore, link: SOCIAL_LINKS.android },
+        ]}
       />
-      {/* <a href="/">Click on the activation Link</a> */}
-      {/* <img src={Messaging} height="170px" width={'170px'} /> */}
     </>
   );
 }

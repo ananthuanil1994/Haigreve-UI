@@ -29,7 +29,7 @@ export default function ActivationSuccess(props) {
           setLoading(true);
           setTimeout(() => {
             setLoading(false);
-            window.open(response.data.url);
+            window.location.replace(response.data.url);
           }, 3000);
         } else {
           setStatus(false);

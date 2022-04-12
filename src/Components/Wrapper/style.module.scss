@@ -42,20 +42,18 @@
           max-width: 170px;
           max-height: 170px;
         }
-      }
-    }
-    .controlArea {
-      @extend %flexbox;
-      @extend %all-center;
-      padding: 10px;
-      li {
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        border: 3px solid theme-colors('theam', 'dark');
-        margin: 5px;
-        &.active {
-          border: 3px solid theme-colors('theam', 'light');
+        .socialTxt {
+          margin: 2rem 0;
+        }
+        .socialLinks {
+          @extend %flexbox;
+          @extend %justify-center;
+          gap: 2rem;
+          img {
+            cursor: pointer;
+            height: 4rem;
+            width: 4rem;
+          }
         }
       }
     }
@@ -100,6 +98,9 @@
             font-weight: 500;
             list-style: outside;
             margin-bottom: 1.5rem;
+            &:last-child {
+              list-style-type: none;
+            }
           }
         }
         a {
@@ -168,6 +169,41 @@
                 @include transition(all 0.4s ease-in-out);
               }
             }
+          }
+        }
+      }
+
+      .downloadLink {
+        @extend %flex-column;
+        gap: 10px;
+        li {
+          cursor: pointer;
+          @extend %flexbox;
+          @extend %justify-start;
+          font-size: 20px;
+          font-weight: 400;
+          .downloadIcon {
+            margin: 0 5px;
+            position: relative;
+            top: 2px;
+            height: 18px;
+            width: 18px;
+          }
+        }
+      }
+
+      .controlArea {
+        @extend %flexbox;
+        @extend %all-center;
+        padding: 10px;
+        li {
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          border: 3px solid theme-colors('theam', 'dark');
+          margin: 5px;
+          &.active {
+            border: 3px solid theme-colors('theam', 'light');
           }
         }
       }
