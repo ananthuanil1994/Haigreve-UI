@@ -98,7 +98,7 @@
             font-weight: 500;
             list-style: outside;
             margin-bottom: 1.5rem;
-            &:last-child {
+            &:last-of-type:not(:only-of-type) {
               list-style-type: none;
             }
           }

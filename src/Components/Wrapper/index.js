@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import PropType, { func } from 'prop-types';
+import PropType from 'prop-types';
 import style from './style.module.scss';
 import Container from '../Container';
 import { SUPPORT_LINK } from '../../config';
@@ -31,7 +31,7 @@ export function RightSection({
   contentimage,
   contentText,
   showGetStarted = true,
-  download = true,
+  download = false,
 }) {
   return (
     <div className={style.contentBlock__right}>
@@ -42,7 +42,7 @@ export function RightSection({
           </div>
           <ul className={style.planContent__list}>
             <li>{contentText}</li>
-            <li>Download</li>
+            {download && <li>Download</li>}
           </ul>
           {showGetStarted ? (
             <a className="startBtn" href="">

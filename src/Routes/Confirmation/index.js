@@ -7,7 +7,7 @@ import Wrapper, {
 import Messaging from '../../../public/img/messaging.png';
 import Engineering from '../../../public/img/engineering.png';
 import AppStore from '../../../public/img/app-store.png';
-import PlayStore from '../../../public/img/image.png';
+import PlayStore from '../../../public/img/google-play.png';
 import { SOCIAL_LINKS } from '../../constants';
 
 export default function Confirmation(props) {
@@ -39,6 +39,7 @@ function ConfirmationRight() {
       contentimage={Engineering}
       contentText={'Processing'}
       showGetStarted={false}
+      download
     />
   );
 }
