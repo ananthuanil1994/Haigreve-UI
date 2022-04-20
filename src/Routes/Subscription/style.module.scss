@@ -1,0 +1,35 @@
+@import '../../styles/abstracts/controls';
+
+.subscription {
+  width: 80%;
+  margin: auto;
+  padding: 1.2rem 0rem;
+  @extend %flex-column;
+  @extend %all-center;
+  div {
+    margin-bottom: 2rem;
+    p {
+      text-align: center;
+      color: black;
+      font-weight: 500;
+      &:last-child {
+        font-size: 14px;
+      }
+    }
+  }
+  .subscribeBtn {
+    background: theme-colors('theam', 'light');
+    color: #f8f1fa;
+    font-weight: 500;
+    padding: 0.5rem 2.5rem;
+    cursor: pointer;
+    border: none;
+    @extend %flexbox;
+    @extend %all-center;
+
+    &:hover {
+      color: theme-colors('background', 'white');
+      background: theme-colors('theam', 'base');
+    }
+  }
+}

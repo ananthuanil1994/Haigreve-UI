@@ -6,7 +6,8 @@ import { RightSection } from '../../Components/Wrapper';
 import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
 import RightImage from '../../../public/img/details.png';
-import { checkSubscriptionStatus } from '../../api';
+import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // config change
 const FormConfig = {
@@ -29,11 +30,12 @@ const FormConfig = {
 };
 
 export function InfoFormLeft({ nextButton, submitUserInfo }) {
+  const history = useHistory();
+  const params = useParams();
   const [formConfig, setFormConfig] = useState(Object.assign({}, FormConfig));
   const [isTouched, setTouched] = useState(false);
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
 
-  // changed config to add first and last name
   const { firstName, lastName, email, phone } = formConfig;
 
   const onSubmit = async (cb) => {
@@ -41,31 +43,29 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     const { isValid, formConfig: config } = validateInfoForm(formConfig);
     setFormConfig({ ...config });
     if (isValid) {
-      setApiInfo({ loading: true });
-      const { success, confirmUrl, error } = await submitUserInfo(
-        getReqBodyFromConfig(formConfig)
-      );
+      history.push({
+        pathname: '/subscription',
+        state: { data: formConfig, provider: params.provider },
+      });
+      // setApiInfo({ loading: true });
+      // const { success, confirmUrl, error } = await submitUserInfo(
+      //   getReqBodyFromConfig(formConfig)
+      // );
 
-      setApiInfo({ error: !success });
+      // setApiInfo({ error: !success });
 
-      if (success) {
-        location.href = confirmUrl;
-        setApiInfo({ loading: false });
-      } else if (error) {
-        message.error(error, 5);
-      } else {
-        message.error(
-          'We are experiencing technical difficulties, please try again later!',
-          5
-        );
-      }
+      // if (success) {
+      //   location.href = confirmUrl;
+      //   setApiInfo({ loading: false });
+      // } else if (error) {
+      //   message.error(error, 5);
+      // } else {
+      //   message.error(
+      //     'We are experiencing technical difficulties, please try again later!',
+      //     5
+      //   );
+      // }
     }
-  };
-
-  const checkStatus = async () => {
-    const response = await checkSubscriptionStatus(phone);
-    setStatusTest(response);
-    // preadded
   };
 
   const inputChange = ({ id, target }) => {
@@ -75,11 +75,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     } else {
       config[id].value = target.value;
     }
-
     if (isTouched) config = validateInfoForm(config).formConfig;
     setFormConfig({ ...config });
   };
-  // added input elements for first and last name
   return (
     <React.Fragment>
       <form>
