@@ -7,7 +7,7 @@ import Plan4 from '../../../public/img/plan1.png';
 const tabs = {
   choosePlan: 'choosePlan',
   infoForm: 'infoForm',
-  //   payment: 'payment',
+  //   subscription: 'payment',
   //   success: 'success',
 };
 export default {
