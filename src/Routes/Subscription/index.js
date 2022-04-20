@@ -80,6 +80,7 @@ function SubscriptionRight() {
       contentimage={subscriptionImage}
       contentText={'Subscribe'}
       showGetStarted={false}
+      link={false}
     />
   );
 }

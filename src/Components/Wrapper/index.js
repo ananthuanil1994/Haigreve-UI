@@ -32,6 +32,7 @@ export function RightSection({
   contentText,
   showGetStarted = true,
   download = false,
+  link = true,
 }) {
   return (
     <div className={style.contentBlock__right}>
@@ -51,7 +52,7 @@ export function RightSection({
           ) : null}
           {download && <DownloadLinks />}
         </div>
-        <SupportLink />
+        {link && <SupportLink />}
       </div>
     </div>
   );
