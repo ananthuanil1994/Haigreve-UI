@@ -11,6 +11,7 @@ import Header from '../../Components/Header';
 import ActivationSuccess from '../ActivationSuccess';
 import Confirmation from '../Confirmation';
 import { Subscription } from '../Subscription';
+import { Provider } from '../Provider';
 
 class MainFrame extends Component {
   render() {
@@ -18,11 +19,12 @@ class MainFrame extends Component {
       <Fragment>
         <Header />
         <Switch>
+          <Route exact path={ROUTES.INDEX} component={Provider} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.SUBSCRIBTION} component={Subscription} />
           <Route path={ROUTES.CONFIRMATION} component={Confirmation} />
           <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} />
-          <Redirect from={ROUTES.INDEX} to={ROUTES.HOME} />
+          <Redirect from={ROUTES.INDEX} to={ROUTES.INDEX} />
         </Switch>
       </Fragment>
     );

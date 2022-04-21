@@ -1,5 +1,5 @@
 /*eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import Wrapper, {
   RightSection,
   SuccessSection,

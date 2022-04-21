@@ -1,10 +1,9 @@
 export const ROUTES = {
   LOGIN: '/login',
   HOME: '/:provider/home',
-  PAYMENT_SUCCESS: '/payment-success',
-  CONFIRMATION: '/confirmation',
-  ACTIVATION: '/activation',
-  DETAILS: '/details',
-  SUBSCRIBTION: '/subscription',
+  PAYMENT_SUCCESS: '/:provider/payment-success',
+  CONFIRMATION: '/:provider/confirmation',
+  ACTIVATION: '/:provider/activation',
+  SUBSCRIBTION: '/:provider/subscription',
   INDEX: '/',
 };

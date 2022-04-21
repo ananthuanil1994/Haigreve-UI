@@ -9,7 +9,6 @@ import RightImage from '../../../public/img/details.png';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-// config change
 const FormConfig = {
   email: {
     value: '',
@@ -44,27 +43,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     setFormConfig({ ...config });
     if (isValid) {
       history.push({
-        pathname: '/subscription',
+        pathname: '/' + params.provider + '/subscription',
         state: { data: formConfig, provider: params.provider },
       });
-      // setApiInfo({ loading: true });
-      // const { success, confirmUrl, error } = await submitUserInfo(
-      //   getReqBodyFromConfig(formConfig)
-      // );
-
-      // setApiInfo({ error: !success });
-
-      // if (success) {
-      //   location.href = confirmUrl;
-      //   setApiInfo({ loading: false });
-      // } else if (error) {
-      //   message.error(error, 5);
-      // } else {
-      //   message.error(
-      //     'We are experiencing technical difficulties, please try again later!',
-      //     5
-      //   );
-      // }
     }
   };
 
