@@ -13,10 +13,16 @@ import { submitUserPlanInfo } from '../../api';
 import { getIndexRoute } from '../../utils/queryString';
 import { ROUTES } from '../../Routes.constants';
 import Wrapper from '../../Components/Wrapper';
+import { useParams } from 'react-router-dom';
+import { PROVIDERS } from '../../constants';
 function Home(props) {
+  const params = useParams();
   const [activeTab, setActiveTab] = useState(constants.tabs.choosePlan);
   const [forms, setForms] = useState({});
   useEffect(() => {
+    if (!(params.provider in PROVIDERS)) {
+      location.replace('/');
+    }
     if (getIndexRoute() === ROUTES.PAYMENT_SUCCESS.split('/')[1])
       setActiveTab(constants.tabs.success);
   }, []);
@@ -117,7 +123,7 @@ function Home(props) {
           className={style.nextBtn}
         >
           {loading ? <Loader classList={['sm white']} /> : ''}
-          Submit
+          Next
         </Button>
       </React.Fragment>
     );

@@ -43,7 +43,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     setFormConfig({ ...config });
     if (isValid) {
       history.push({
-        pathname: '/subscription',
+        pathname: '/' + params.provider + '/subscription',
         state: { data: formConfig, provider: params.provider },
       });
     }

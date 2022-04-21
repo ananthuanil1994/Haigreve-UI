@@ -1,0 +1,45 @@
+@import '../../styles/abstracts/controls';
+
+.provider {
+  background-color: white;
+  padding: 2rem;
+  .providerTitle {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .providerList {
+    margin-bottom: 1rem;
+    @include media('<phone') {
+      @include flex-direction(column);
+    }
+    @include media('>=phone', '<tablet') {
+      @include flex-direction(column);
+    }
+    @extend %flexbox;
+    @extend %justify-center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .providerBtn {
+      @include media('<phone') {
+        width: 100%;
+      }
+      @include media('>=phone', '<tablet') {
+        width: 100%;
+      }
+      background: theme-colors('theam', 'light');
+      color: theme-colors('background', 'white');
+      font-weight: 500;
+      padding: 0.5rem 2.5rem;
+      cursor: pointer;
+      border: none;
+      @extend %flexbox;
+      @extend %all-center;
+
+      &:hover {
+        color: theme-colors('background', 'white');
+        background: theme-colors('theam', 'base');
+      }
+    }
+  }
+}
