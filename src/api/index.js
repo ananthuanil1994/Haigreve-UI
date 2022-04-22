@@ -7,12 +7,13 @@ const CONFIRM_SUBSCRIPTION_URL = API_BASE_URL + '/confirmSubscription'; //added 
 const CHECK_SUBSCRIPTION_STATUS = API_BASE_URL + '/checkSubscriptionStatus'; // aded subscription check url -- joel
 const ACTIVATE_SUBSCRIPTION_URL = API_BASE_URL + '/activateSubscription'; // added activateSubscription url -- joel
 
-export const submitUserPlanInfo = async (data) => {
+export const submitUserPlanInfo = async (data, provider) => {
   const payload = {
     first_name: data.firstName,
     last_name: data.lastName,
     email: data.email,
     phone_number: data.phone,
+    provider: provider,
   };
   try {
     const log = await axios.post(SAVE_CUSTOMER_URL, {
@@ -22,7 +23,6 @@ export const submitUserPlanInfo = async (data) => {
     // if (!log.email) {
     //   return { success: false, error: log.message };
     // }
-    console.log(log);
     const response = await axios.post(CONFIRM_SUBSCRIPTION_URL, payload); // {"confirmation_link": ""}
     return { success: true, confirmUrl: response.data['confirmation_link'] };
   } catch {

@@ -17,7 +17,8 @@ export function Subscription() {
   const handleClick = async () => {
     setLoading(true);
     const { success, confirmUrl, error } = await submitUserPlanInfo(
-      getReqBodyFromConfig(data)
+      getReqBodyFromConfig(data),
+      provider
     );
     if (success) {
       setLoading(false);
