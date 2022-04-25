@@ -51,7 +51,7 @@ export const getReqBodyFromConfig = (formConfig) => {
   const obj = {};
   Object.keys(formConfig).map((field) => {
     if (field === 'phone') {
-      obj[field] = formConfig[field].value.replace('+88 ', '88');
+      obj[field] = formConfig[field].value.replace('+88 ', '+88');
     } else {
       obj[field] = formConfig[field].value;
     }
