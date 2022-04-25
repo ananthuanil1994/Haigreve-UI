@@ -10,10 +10,10 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const FormConfig = {
-  email: {
-    value: '',
-    error: '',
-  },
+  // email: {
+  //   value: '',
+  //   error: '',
+  // },
   firstName: {
     value: '',
     error: '',
@@ -40,12 +40,18 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const onSubmit = async (cb) => {
     setTouched(true);
     const { isValid, formConfig: config } = validateInfoForm(formConfig);
-    setFormConfig({ ...config });
-    if (isValid) {
-      history.push({
-        pathname: '/' + params.provider + '/subscription',
-        state: { data: formConfig, provider: params.provider },
-      });
+    // setFormConfig({ ...config });
+    const body = getReqBodyFromConfig(formConfig);
+    const { success, confirmUrl, error } = await submitUserInfo(body);
+    if (true) {
+      location.href = '/teletalk/activation?phone=' + body.phone;
+    } else if (error) {
+      message.error(error, 5);
+    } else {
+      message.error(
+        'We are experiencing technical difficulties, please try again later!',
+        5
+      );
     }
   };
 
@@ -106,7 +112,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               required
             />
           </li>
-          <li>
+          {/* <li>
             <InputField
               htmlForName="email"
               placeholderLabel="Email"
@@ -117,7 +123,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               error={email.error}
               required
             />
-          </li>
+          </li> */}
         </ul>
       </form>
       <div className={style.controlButtons}>

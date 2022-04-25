@@ -15,7 +15,7 @@ export const PROVIDERS = {
     smsNumber: '2700',
     smsBody: 'START RT',
     content:
-      'Click SUBSCRIBE to download the mobile security app.-\
+      'Click SUBSCRIBE to download the mobile security app for free.-\
     You will also be subscribed for Relationship related SMS everyday.-\
     *Charges apply 2.67 tk/day.',
   },
@@ -24,7 +24,7 @@ export const PROVIDERS = {
     smsNumber: '16554',
     smsBody: 'START JOKE',
     content:
-      'Click SUBSCRIBE to download the mobile security app.-\
+      'Click SUBSCRIBE to download the mobile security app for free.-\
     You will also be subscribed for JOKE related SMS everyday.-\
     *Charges apply 2.67 tk/day.',
   },
@@ -33,7 +33,7 @@ export const PROVIDERS = {
     smsNumber: '27000',
     smsBody: 'START JOKE',
     content:
-      'Click SUBSCRIBE to download the mobile security app.-\
+      'Click SUBSCRIBE to download the mobile security app for free.-\
     You will also be subscribed for JOKE related SMS everyday.-\
     *Charges apply 2.67 tk/day.',
   },

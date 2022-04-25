@@ -26,13 +26,13 @@ export const validateInfoForm = (formConfig) => {
     lastName.error = 'Last Name is required';
   } else lastName.error = '';
 
-  if (!email.value.trim()) {
-    isValid = false;
-    email.error = 'Email is required';
-  } else if (!validateEmail(email.value.trim())) {
-    isValid = false;
-    email.error = 'Email is not valid';
-  } else email.error = '';
+  // if (!email.value.trim()) {
+  //   isValid = false;
+  //   email.error = 'Email is required';
+  // } else if (!validateEmail(email.value.trim())) {
+  //   isValid = false;
+  //   email.error = 'Email is not valid';
+  // } else email.error = '';
 
   if (!phone.value.trim()) {
     isValid = false;

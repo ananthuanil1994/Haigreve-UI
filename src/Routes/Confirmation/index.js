@@ -4,12 +4,17 @@ import Wrapper, {
   RightSection,
   SuccessSection,
 } from '../../Components/Wrapper';
-import Messaging from '../../../public/img/messaging.png';
+import Download from '../../../public/img/download1.png';
 import Engineering from '../../../public/img/engineering.png';
 import AppStore from '../../../public/img/app-store.png';
 import PlayStore from '../../../public/img/google-play.png';
 import { SOCIAL_LINKS } from '../../constants';
+import { Button } from 'antd';
+import style from './style.module.scss';
 
+function handleClick() {
+  window.location.href = '/teletalk/details';
+}
 export default function Confirmation(props) {
   return (
     <>
@@ -21,14 +26,22 @@ function ConfirmationLeft() {
   return (
     <>
       <SuccessSection
-        successTxt={'Please check your mobile for text messages from 2700.'}
-        successImage={Messaging}
-        socialText={'Meanwhile, Please Download our App!'}
+        // successTxt={'Please check your mobile for text messages from 2700.'}
+        successImage={Download}
+        socialText={'Please Download our App!'}
         socialLinks={[
           { icon: AppStore, link: SOCIAL_LINKS.apple },
           { icon: PlayStore, link: SOCIAL_LINKS.android },
         ]}
       />
+
+      <Button
+        id={style.downloadBtn}
+        onClick={() => handleClick()}
+        loading={false}
+      >
+        Next
+      </Button>
     </>
   );
 }

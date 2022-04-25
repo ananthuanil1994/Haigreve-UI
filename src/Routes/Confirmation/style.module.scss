@@ -25,3 +25,20 @@
     }
   }
 }
+
+#downloadBtn {
+  background: theme-colors('theam', 'light');
+  color: theme-colors('background', 'white');
+  font-weight: 500;
+  width: 25%;
+  padding: 0.5rem 2.5rem;
+  margin: 0 auto;
+  cursor: pointer;
+  border: none;
+  @extend %flexbox;
+  @extend %all-center;
+  &:hover {
+    color: theme-colors('background', 'white');
+    background: theme-colors('theam', 'base');
+  }
+}

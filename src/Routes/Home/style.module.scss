@@ -81,8 +81,8 @@
     @extend %flexbox;
 
     li {
+      flex: 1 0 auto;
       margin-bottom: 0.7rem;
-      min-width: 50%;
       input {
         width: 98%;
         margin-left: 0.2rem;

@@ -5,7 +5,7 @@ import Plan3 from '../../../public/img/plan1.png';
 import Plan4 from '../../../public/img/plan1.png';
 
 const tabs = {
-  choosePlan: 'choosePlan',
+  // choosePlan: 'choosePlan',
   infoForm: 'infoForm',
   //   subscription: 'payment',
   //   success: 'success',
@@ -15,11 +15,11 @@ export default {
   errorMessage:
     'We are experiencing technical difficulties, please try again later!',
   pageConfig: {
-    [tabs.choosePlan]: {
-      id: 1,
-      name: tabs.choosePlan,
-      image: Plan1,
-    },
+    // [tabs.choosePlan]: {
+    //   id: 1,
+    //   name: tabs.choosePlan,
+    //   image: Plan1,
+    // },
     [tabs.infoForm]: {
       id: 2,
       name: tabs.infoForm,
