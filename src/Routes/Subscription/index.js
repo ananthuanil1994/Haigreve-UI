@@ -5,8 +5,6 @@ import Wrapper, { RightSection } from '../../Components/Wrapper';
 import subscriptionImage from '../../../public/img/subscription.png';
 import { Button } from 'antd';
 import { useLocation } from 'react-router-dom';
-// import { submitUserPlanInfo } from '../../api';
-// import { getReqBodyFromConfig } from '../Home/helper';
 import { PROVIDERS } from '../../constants';
 
 export function Subscription() {
