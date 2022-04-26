@@ -34,7 +34,9 @@ function ConfirmationLeft() {
           { icon: PlayStore, link: SOCIAL_LINKS.android },
         ]}
       />
-
+      <h3 className={style.next}>
+        You can activate the application by clicking next button
+      </h3>
       <Button
         id={style.downloadBtn}
         onClick={() => handleClick()}
