@@ -10,10 +10,6 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const FormConfig = {
-  // email: {
-  //   value: '',
-  //   error: '',
-  // },
   firstName: {
     value: '',
     error: '',
@@ -40,10 +36,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const onSubmit = async (cb) => {
     setTouched(true);
     const { isValid, formConfig: config } = validateInfoForm(formConfig);
-    // setFormConfig({ ...config });
     const body = getReqBodyFromConfig(formConfig);
-    const { success, confirmUrl, error } = await submitUserInfo(body);
-    if (true) {
+    const { success, error } = await submitUserInfo(body);
+    if (success) {
       location.href = '/teletalk/activation?phone=' + body.phone;
     } else if (error) {
       message.error(error, 5);
@@ -58,7 +53,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const inputChange = ({ id, target }) => {
     let config = formConfig;
     if (id === 'phone' && target.value === '+88') {
-      config[id].value = '+88 '; //space is important
+      config[id].value = '+88 ';
     } else {
       config[id].value = target.value;
     }
