@@ -19,12 +19,16 @@ class MainFrame extends Component {
       <Fragment>
         <Header />
         <Switch>
-          <Route exact path={ROUTES.INDEX} component={Provider} />
+          {/* <Route exact path={ROUTES.INDEX} component={Provider} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.SUBSCRIBTION} component={Subscription} />
           <Route path={ROUTES.CONFIRMATION} component={Confirmation} />
+          <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} /> */}
+          <Route path={ROUTES.HOME} component={Subscription} />
+          <Route path={ROUTES.DOWNLOAD} component={Confirmation} />
+          <Route path={ROUTES.USER} component={Home} />
           <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} />
-          <Redirect from={ROUTES.INDEX} to={ROUTES.INDEX} />
+          <Redirect from={ROUTES.INDEX} to={ROUTES.HOME} />
         </Switch>
       </Fragment>
     );

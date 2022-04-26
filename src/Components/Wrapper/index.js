@@ -3,7 +3,6 @@ import React from 'react';
 import PropType from 'prop-types';
 import style from './style.module.scss';
 import Container from '../Container';
-import { SUPPORT_LINK } from '../../config';
 import SuccessImage from '../../../public/img/success.png';
 import Android from '../../../public/img/android.png';
 import { SOCIAL_LINKS } from '../../constants';
@@ -95,8 +94,8 @@ export function SuccessSection({
         {socialText && <h3 className={style.socialTxt}>{socialText}</h3>}
         {socialLinks && (
           <ul className={style.socialLinks}>
-            {socialLinks.map((item) => (
-              <li onClick={() => (location.href = item.link)}>
+            {socialLinks.map((item, idx) => (
+              <li key={idx} onClick={() => (location.href = item.link)}>
                 <img src={item.icon} />
               </li>
             ))}

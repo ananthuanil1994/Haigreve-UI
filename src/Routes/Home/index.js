@@ -17,15 +17,15 @@ import { useParams } from 'react-router-dom';
 import { PROVIDERS } from '../../constants';
 function Home(props) {
   const params = useParams();
-  const [activeTab, setActiveTab] = useState(constants.tabs.choosePlan);
+  const [activeTab, setActiveTab] = useState(constants.tabs.infoForm);
   const [forms, setForms] = useState({});
-  useEffect(() => {
-    if (!(params.provider in PROVIDERS)) {
-      location.replace('/');
-    }
-    if (getIndexRoute() === ROUTES.PAYMENT_SUCCESS.split('/')[1])
-      setActiveTab(constants.tabs.success);
-  }, []);
+  // useEffect(() => {
+  //   if (!(params.provider in PROVIDERS)) {
+  //     location.replace('/');
+  //   }
+  //   if (getIndexRoute() === ROUTES.PAYMENT_SUCCESS.split('/')[1])
+  //     setActiveTab(constants.tabs.success);
+  // }, []);
 
   const submitUserInfo = async (requestBody) => {
     requestBody.plan = forms[constants.tabs.choosePlan]?.plan;
@@ -34,13 +34,13 @@ function Home(props) {
 
   const getContent = () => {
     switch (activeTab) {
-      case constants.tabs.choosePlan:
-        return {
-          Left: (
-            <ChoosePlanLeft data={forms[activeTab]} nextButton={nextButton} />
-          ),
-          Right: <ChoosePlanRight config={constants.pageConfig[activeTab]} />,
-        };
+      // case constants.tabs.choosePlan:
+      //   return {
+      //     Left: (
+      //       <ChoosePlanLeft data={forms[activeTab]} nextButton={nextButton} />
+      //     ),
+      //     Right: <ChoosePlanRight config={constants.pageConfig[activeTab]} />,
+      //   };
       case constants.tabs.infoForm:
         return {
           Left: (
@@ -51,16 +51,16 @@ function Home(props) {
           ),
           Right: <InfoFormRight config={constants.pageConfig[activeTab]} />,
         };
-      case constants.tabs.payment:
-        return {
-          Left: <PaymentLeft nextButton={nextButton} />,
-          Right: <PaymentRight config={constants.pageConfig[activeTab]} />,
-        };
-      case constants.tabs.success:
-        return {
-          Left: <SuccessLeft nextButton={nextButton} />,
-          Right: <SuccessRight config={constants.pageConfig[activeTab]} />,
-        };
+      // case constants.tabs.payment:
+      //   return {
+      //     Left: <PaymentLeft nextButton={nextButton} />,
+      //     Right: <PaymentRight config={constants.pageConfig[activeTab]} />,
+      //   };
+      // case constants.tabs.success:
+      //   return {
+      //     Left: <SuccessLeft nextButton={nextButton} />,
+      //     Right: <SuccessRight config={constants.pageConfig[activeTab]} />,
+      //   };
 
       default:
         return {
@@ -91,7 +91,7 @@ function Home(props) {
     const onClickBack = () => setActiveTab(constants.tabs.choosePlan);
 
     let backButton =
-      activeTab === constants.tabs.infoForm ? (
+      activeTab === constants.tabs.choosePlan ? ( // change to infoForm for prev action
         <Button
           disabled={loading}
           children="Prev"

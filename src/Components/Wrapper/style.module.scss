@@ -27,7 +27,7 @@
       @extend %flex-column;
       @include border-radius(4px);
       .success {
-        width: 80%;
+        width: 100%;
         margin: auto;
         padding: 1.2rem 0rem;
         @extend %flex-column;
@@ -43,7 +43,7 @@
           max-height: 170px;
         }
         .socialTxt {
-          margin: 2rem 0;
+          margin: 1.2rem 0;
         }
         .socialLinks {
           @extend %flexbox;
@@ -51,8 +51,8 @@
           gap: 2rem;
           img {
             cursor: pointer;
-            height: 4rem;
-            width: 4rem;
+            height: 3rem;
+            width: 3rem;
           }
         }
       }

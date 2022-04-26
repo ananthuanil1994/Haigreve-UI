@@ -1,39 +1,22 @@
 /*eslint-disable*/
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import style from './style.module.scss';
 import Wrapper, { RightSection } from '../../Components/Wrapper';
 import subscriptionImage from '../../../public/img/subscription.png';
 import { Button } from 'antd';
 import { useLocation } from 'react-router-dom';
-import { submitUserPlanInfo } from '../../api';
-import { getReqBodyFromConfig } from '../Home/helper';
+// import { submitUserPlanInfo } from '../../api';
+// import { getReqBodyFromConfig } from '../Home/helper';
 import { PROVIDERS } from '../../constants';
 
 export function Subscription() {
   const location = useLocation();
-  const { data, provider } = location.state;
-  const { smsNumber, smsBody, content } = PROVIDERS[provider];
+  const { smsNumber, smsBody, content } = PROVIDERS['teletalk'];
   const [loading, setLoading] = useState(false);
   const handleClick = async () => {
-    setLoading(true);
-    const { success, confirmUrl, error } = await submitUserPlanInfo(
-      getReqBodyFromConfig(data),
-      provider
-    );
-    if (success) {
-      setLoading(false);
-      window.location.href = `sms:${smsNumber}?body=${encodeURIComponent(
-        smsBody
-      )}`;
-      window.location.href = confirmUrl;
-    } else if (error) {
-      message.error(error, 5);
-    } else {
-      message.error(
-        'We are experiencing technical difficulties, please try again later!',
-        5
-      );
-    }
+    window.location.href = `sms:${smsNumber}?body=${encodeURIComponent(
+      smsBody
+    )}`;
   };
   return (
     <Wrapper
@@ -53,8 +36,8 @@ export function Subscription() {
 function getContent(content) {
   return (
     <div>
-      {content.split('-').map((t) => (
-        <p>{t}</p>
+      {content.split('-').map((t, key) => (
+        <p key={key}>{t}</p>
       ))}
     </div>
   );
