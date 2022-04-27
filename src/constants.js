@@ -16,8 +16,8 @@ export const PROVIDERS = {
     smsBody: 'START RT',
     content:
       'Click SUBSCRIBE to download the mobile security app for free.-\
-    You will also be subscribed for Relationship related SMS everyday.-\
-    *Charges apply 2.67 tk/day.',
+      For this In addition, you have to be subscribed for Relationship related SMS every day.-\
+    *Charges apply 2.67 tk/day. This service is only for Teletalk user.',
   },
   grameen: {
     name: 'grameen',
