@@ -36,10 +36,10 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const onSubmit = async (cb) => {
     setTouched(true);
     const { isValid, formConfig: config } = validateInfoForm(formConfig);
-    const body = getReqBodyFromConfig(formConfig);
-    const { success, error } = await submitUserInfo(body);
+    const body = getReqBodyFromConfig(config);
+    const { success, error } = await submitUserInfo(body, params.provider);
     if (success) {
-      location.href = '/teletalk/activation?phone=' + body.phone;
+      location.href = `/${params.provider}/activation?phone=${body.phone}`;
     } else if (error) {
       message.error(error, 5);
     } else {

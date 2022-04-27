@@ -10,16 +10,16 @@ export const submitUserPlanInfo = async (data, provider) => {
     first_name: data.firstName,
     last_name: data.lastName,
     phone_number: data.phone,
-    provider: 'teletalk',
+    provider,
   };
   try {
     const log = await axios.post(SAVE_CUSTOMER_URL, {
       ...payload,
       subscription_plan: 1,
     });
-    // if (!log.email) {
-    //   return { success: false, error: log.message };
-    // }
+    if (log?.error) {
+      return { success: false, error: log.message };
+    }
     return { success: true };
   } catch {
     return { success: false };
