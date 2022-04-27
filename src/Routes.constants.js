@@ -5,9 +5,9 @@ export const ROUTES = {
   // CONFIRMATION: '/:provider/confirmation',
   // ACTIVATION: '/:provider/activation',
   // SUBSCRIBTION: '/:provider/subscription',
-  HOME: '/teletalk/home',
-  DOWNLOAD: '/download',
-  USER: '/teletalk/details',
-  ACTIVATION: '/teletalk/activation',
+  HOME: '/:provider/home',
+  DOWNLOAD: '/:provider/download',
+  USER: '/:provider/details',
+  ACTIVATION: '/:provider/activation',
   INDEX: '/',
 };

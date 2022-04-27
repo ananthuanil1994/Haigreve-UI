@@ -1,14 +1,22 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style.module.scss';
 import Wrapper, { RightSection } from '../../Components/Wrapper';
 import subscriptionImage from '../../../public/img/subscription.png';
 import { Button } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { PROVIDERS } from '../../constants';
+import { useParams } from 'react-router-dom';
 
 export function Subscription() {
   const location = useLocation();
+  const params = useParams();
+
+  useEffect(() => {
+    if (!(params.provider in PROVIDERS)) {
+      window.location.replace('/teletalk/home');
+    }
+  }, []);
   const { smsNumber, smsBody, content } = PROVIDERS['teletalk'];
   const [loading, setLoading] = useState(false);
   const handleClick = async () => {

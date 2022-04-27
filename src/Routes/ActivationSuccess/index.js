@@ -10,7 +10,6 @@ import System from '../../../public/img/system.png';
 import { useLocation } from 'react-router-dom';
 import { activateSubscription } from '../../api';
 import { message } from 'antd';
-// import RightImage from '../../../public/img/winner.png';
 export default function ActivationSuccess(props) {
   const location = useLocation();
 
