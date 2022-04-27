@@ -14,10 +14,10 @@ export function Subscription() {
 
   useEffect(() => {
     if (!(params.provider in PROVIDERS)) {
-      window.location.replace('/teletalk/home');
+      window.location.replace('/');
     }
   }, []);
-  const { smsNumber, smsBody, content } = PROVIDERS['teletalk'];
+  const { smsNumber, smsBody, content } = PROVIDERS[params.provider];
   const [loading, setLoading] = useState(false);
   const handleClick = async () => {
     window.location.href = `sms:${smsNumber}?body=${encodeURIComponent(

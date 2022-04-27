@@ -25,28 +25,29 @@ const FormConfig = {
 };
 
 export function InfoFormLeft({ nextButton, submitUserInfo }) {
-  const history = useHistory();
   const params = useParams();
   const [formConfig, setFormConfig] = useState(Object.assign({}, FormConfig));
   const [isTouched, setTouched] = useState(false);
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
 
-  const { firstName, lastName, email, phone } = formConfig;
+  const { firstName, lastName, phone } = formConfig;
 
   const onSubmit = async (cb) => {
     setTouched(true);
     const { isValid, formConfig: config } = validateInfoForm(formConfig);
-    const body = getReqBodyFromConfig(config);
-    const { success, error } = await submitUserInfo(body, params.provider);
-    if (success) {
-      location.href = `/${params.provider}/activation?phone=${body.phone}`;
-    } else if (error) {
-      message.error(error, 5);
-    } else {
-      message.error(
-        'We are experiencing technical difficulties, please try again later!',
-        5
-      );
+    if (isValid) {
+      const body = getReqBodyFromConfig(config);
+      const { success, error } = await submitUserInfo(body, params.provider);
+      if (success) {
+        location.href = `/${params.provider}/activation?phone=${body.phone}`;
+      } else if (error) {
+        message.error(error, 5);
+      } else {
+        message.error(
+          'We are experiencing technical difficulties, please try again later!',
+          5
+        );
+      }
     }
   };
 
