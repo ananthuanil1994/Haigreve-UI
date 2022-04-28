@@ -6,7 +6,6 @@ import { RightSection } from '../../Components/Wrapper';
 import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
 import RightImage from '../../../public/img/details.png';
-import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const FormConfig = {
