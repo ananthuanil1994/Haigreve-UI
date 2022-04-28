@@ -20,7 +20,7 @@ export function Subscription() {
   const { smsNumber, smsBody, content } = PROVIDERS[params.provider];
   const [loading, setLoading] = useState(false);
   const handleClick = async () => {
-    window.location.href = `sms:${smsNumber}?body=${encodeURIComponent(
+    window.location.href = `sms:// ${smsNumber};?&body=${encodeURIComponent(
       smsBody
     )}`;
   };

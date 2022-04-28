@@ -19,8 +19,8 @@ export const PROVIDERS = {
       For this In addition, you have to be subscribed for Relationship related SMS every day.-\
     *Charges apply 2.67 tk/day. This service is only for Teletalk user.',
   },
-  grameen: {
-    name: 'grameen',
+  grameenphone: {
+    name: 'grameenphone',
     smsNumber: '16554',
     smsBody: 'START JOKE',
     content:
