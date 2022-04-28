@@ -11,7 +11,7 @@ export function Provider() {
 }
 
 function ProviderLeft() {
-  const providers = ['Teletalk', 'Grameen', 'Robi'];
+  const providers = ['Teletalk', 'Grameenphone', 'Robi'];
   return (
     <div className={style.provider}>
       <h3 className={style.providerTitle}>Select Your Provider</h3>
