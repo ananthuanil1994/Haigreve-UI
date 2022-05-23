@@ -33,9 +33,9 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
 
   const onSubmit = async (cb) => {
     setTouched(true);
-    const { isValid, formConfig: config } = validateInfoForm(formConfig);
+    const { isValid, formConfig: config } = validateInfoForm(formConfig,params.provider);
     if (isValid) {
-      const body = getReqBodyFromConfig(config);
+      const body = getReqBodyFromConfig(config,params.provider);
       const { success, error } = await submitUserInfo(body, params.provider);
       if (success) {
         location.href = `/${params.provider}/activation?phone=${body.phone}`;
@@ -57,7 +57,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
     } else {
       config[id].value = target.value;
     }
-    if (isTouched) config = validateInfoForm(config).formConfig;
+    if (isTouched) config = validateInfoForm(config,params.provider).formConfig;
     setFormConfig({ ...config });
   };
   return (
@@ -96,7 +96,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
               id="phone"
               onChange={inputChange}
               onFocus={() => {
-                !phone.value &&
+                (!phone.value && params.provider !== 'grameenphone') &&
                   setFormConfig((state) => ({
                     ...state,
                     phone: { value: '+88 ' }, //space is important

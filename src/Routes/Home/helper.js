@@ -6,13 +6,19 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-function validatePhone(phone) {
-  // +8801534983669
-  var re = /^(\+88 )?01(\d){9}$/;
+function validatePhone(phone,provider) {
+  // +8801534983669 for Teletalk and Robi
+  // 576829252796607250 for grameenphone
+  var re;
+  if(provider != 'grameenphone'){
+    re = /^(\+88 )?01(\d){9}$/;
+  } else {
+    re = /^(\d){18}$/;
+  }
   return phone.match(re);
 }
 
-export const validateInfoForm = (formConfig) => {
+export const validateInfoForm = (formConfig,provider) => {
   const { firstName, lastName, email, phone } = formConfig; //changed config to include firstName and lastName
   let isValid = true;
   // added validation properties for firstName and lastName
@@ -37,7 +43,7 @@ export const validateInfoForm = (formConfig) => {
   if (!phone.value.trim()) {
     isValid = false;
     phone.error = 'Phone number is required';
-  } else if (!validatePhone(phone.value.trim())) {
+  } else if (!validatePhone(phone.value.trim(),provider)) {
     isValid = false;
     phone.error = 'Phone number is not valid';
   } else phone.error = '';
@@ -47,10 +53,10 @@ export const validateInfoForm = (formConfig) => {
   };
 };
 
-export const getReqBodyFromConfig = (formConfig) => {
+export const getReqBodyFromConfig = (formConfig,provider) => {
   const obj = {};
   Object.keys(formConfig).map((field) => {
-    if (field === 'phone') {
+    if (field === 'phone'&& provider !== 'grameenphone') {
       obj[field] = formConfig[field].value.replace('+88 ', '+88');
     } else {
       obj[field] = formConfig[field].value;
