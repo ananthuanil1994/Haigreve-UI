@@ -10,8 +10,10 @@ import System from '../../../public/img/system.png';
 import { useLocation } from 'react-router-dom';
 import { activateSubscription } from '../../api';
 import { message } from 'antd';
+import { useParams } from 'react-router-dom';
 export default function ActivationSuccess(props) {
   const location = useLocation();
+  const params = useParams();
 
   const searchParams = new URLSearchParams(location.search);
   let phone = searchParams.get('phone');
@@ -20,7 +22,11 @@ export default function ActivationSuccess(props) {
 
   useEffect(async () => {
     if (phone) {
-      phone = '+' + phone.trim();
+      if (params.provider === 'grameenphone'){
+        phone = phone.trim();
+      } else {
+        phone = '+' + phone.trim();
+      }
       try {
         const response = await activateSubscription(phone);
         if (response.data?.url) {
