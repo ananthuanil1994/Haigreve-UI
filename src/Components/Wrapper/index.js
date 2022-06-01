@@ -40,7 +40,7 @@ export function RightSection({
             <img src={contentimage} alt="content-img" />
           </div>
           <ul className={style.planContent__list}>
-            <li>{contentText}</li>
+            {contentText && <li>{contentText}</li>}
             {download && <li>Download</li>}
           </ul>
           {showGetStarted ? (

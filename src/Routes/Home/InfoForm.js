@@ -7,6 +7,7 @@ import { getReqBodyFromConfig, validateInfoForm } from './helper';
 import style from './style.module.scss';
 import RightImage from '../../../public/img/details.png';
 import { useParams } from 'react-router-dom';
+import {isMobile} from 'react-device-detect';
 
 const FormConfig = {
   firstName: {
@@ -30,6 +31,7 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
   const [apiInfo, setApiInfo] = useState({ error: false, loading: false });
 
   const { firstName, lastName, phone } = formConfig;
+  
 
   const onSubmit = async (cb) => {
     setTouched(true);
@@ -38,7 +40,12 @@ export function InfoFormLeft({ nextButton, submitUserInfo }) {
       const body = getReqBodyFromConfig(config,params.provider);
       const { success, error } = await submitUserInfo(body, params.provider);
       if (success) {
+        if(isMobile){
         location.href = `/${params.provider}/activation?phone=${body.phone}`;
+        }
+        else{
+          location.href = `/${params.provider}/notphone`;
+        }
       } else if (error) {
         message.error(error, 5);
       } else {
