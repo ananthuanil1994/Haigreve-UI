@@ -1,0 +1,21 @@
+@import '../../styles/abstracts/controls';
+
+.success {
+  width: 80%;
+  margin: auto;
+  padding: 1.2rem 2rem;
+  @extend %flex-column;
+  @extend %all-center;
+  h3 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: theme-colors('theam', 'dark');
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}

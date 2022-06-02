@@ -4,5 +4,6 @@ export const ROUTES = {
   DOWNLOAD: '/:provider/download',
   USER: '/:provider/details',
   ACTIVATION: '/:provider/activation',
+  NOT_ACTIVATION:'/:provider/notphone',
   INDEX: '/',
 };
