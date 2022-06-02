@@ -12,6 +12,7 @@ import ActivationSuccess from '../ActivationSuccess';
 import Confirmation from '../Confirmation';
 import { Subscription } from '../Subscription';
 import { Provider } from '../Provider';
+import notMobilePhone from '../NotMobile';
 
 class MainFrame extends Component {
   render() {
@@ -24,6 +25,7 @@ class MainFrame extends Component {
           <Route path={ROUTES.DOWNLOAD} component={Confirmation} />
           <Route path={ROUTES.USER} component={Home} />
           <Route path={ROUTES.ACTIVATION} component={ActivationSuccess} />
+          <Route path={ROUTES.NOT_ACTIVATION} component={notMobilePhone} />
           <Redirect from={ROUTES.INDEX} to={ROUTES.INDEX} />
         </Switch>
       </Fragment>

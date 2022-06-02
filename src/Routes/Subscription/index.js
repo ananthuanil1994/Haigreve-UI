@@ -7,11 +7,11 @@ import { Button } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { PROVIDERS } from '../../constants';
 import { useParams } from 'react-router-dom';
+import {isMobile} from 'react-device-detect';
 
 export function Subscription() {
   const location = useLocation();
   const params = useParams();
-
   useEffect(() => {
     if (!(params.provider in PROVIDERS)) {
       window.location.replace('/');
@@ -20,9 +20,15 @@ export function Subscription() {
   const { smsNumber, smsBody, content } = PROVIDERS[params.provider];
   const [loading, setLoading] = useState(false);
   const handleClick = async () => {
-    window.location.href = `sms:// ${smsNumber};?&body=${encodeURIComponent(
-      smsBody
-    )}`;
+    if (isMobile){
+      window.location.href = `sms:// ${smsNumber};?&body=${encodeURIComponent(
+        smsBody
+      )}`
+    }
+    else{
+    window.location.href = `/${params.provider}/notphone`;
+    }
+   ;
   };
   return (
     <Wrapper
